@@ -1,101 +1,93 @@
-import Image from "next/image";
+import { Suspense } from 'react'
+import dynamic from 'next/dynamic'
+import { AnimationWrapper } from '@/components/animation-wrapper'
+
+// Lazy load components
+const Hero = dynamic(() => import('@/components/hero/Hero').then(mod => ({ default: mod.Hero })), {
+  loading: () => <div className="h-screen" />
+})
+
+const Services = dynamic(() => import('@/components/services/Services').then(mod => ({ default: mod.Services })), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
+const WhyUs = dynamic(() => import('@/components/why-us/Why-us').then(mod => ({ default: mod.WhyUs })), {
+  loading: () => <div className="h-96 bg-gradient-to-br from-white to-blue-50/50" />
+})
+
+const Portfolio = dynamic(() => import('@/components/portfolio/Portfolio').then(mod => ({ default: mod.Portfolio })), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
+const Testimonials = dynamic(() => import('@/components/testimonials/Testimonials').then(mod => ({ default: mod.Testimonials })), {
+  loading: () => <div className="h-96 bg-gradient-to-br from-blue-50/50 to-purple-50/50" />
+})
+
+const Contact = dynamic(() => import('@/components/contact/Contact').then(mod => ({ default: mod.Contact })), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
+const Footer = dynamic(() => import('@/components/footer/Footer').then(mod => ({ default: mod.Footer })), {
+  loading: () => <div className="h-40" />
+})
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <main>
+        <section id="hero">
+          <Suspense fallback={<div className="h-screen " />}>
+            <AnimationWrapper>
+              <Hero />
+            </AnimationWrapper>
+          </Suspense>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        <section id="services">
+          <Suspense fallback={<div className="h-96 bg-white" />}>
+            <AnimationWrapper>
+              <Services />
+            </AnimationWrapper>
+          </Suspense>
+        </section>
+
+        <section id="why-us">
+          <Suspense fallback={<div className="h-96 bg-gradient-to-br from-white to-blue-50/50" />}>
+            <AnimationWrapper>
+              <WhyUs />
+            </AnimationWrapper>
+          </Suspense>
+        </section>
+
+        <section id="portfolio">
+          <Suspense fallback={<div className="h-96 bg-white" />}>
+            <AnimationWrapper>
+              <Portfolio />
+            </AnimationWrapper>
+          </Suspense>
+        </section>
+
+        <section id="testimonials">
+          <Suspense fallback={<div className="h-96 bg-gradient-to-br from-blue-50/50 to-purple-50/50" />}>
+            <AnimationWrapper>
+              <Testimonials />
+            </AnimationWrapper>
+          </Suspense>
+        </section>
+
+        <section id="contact">
+          <Suspense fallback={<div className="h-96 bg-white" />}>
+            <AnimationWrapper>
+              <Contact />
+            </AnimationWrapper>
+          </Suspense>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+      <Suspense fallback={<div className="h-40" />}>
+        <Footer />
+      </Suspense>
+    </>
+  )
 }
+
