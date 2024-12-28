@@ -1,44 +1,45 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
 const portfolioItems = [
   {
-    image: '/placeholder.svg',
-    category: 'UI/UX Designer',
-    title: 'Top 5 Hackathon FINDIT UGM 2024',
-    date: '24 Mei, 2024',
-    author: 'EVOP',
+    image: "/portofolio.png",
+    category: "UI/UX Designer",
+    title: "Top 5 Hackathon FINDIT UGM 2024",
+    date: "24 Mei, 2024",
+    author: "EVOP",
   },
   {
-    image: '/placeholder.svg',
-    category: 'UI/UX Designer',
-    title: 'Top 5 Hackathon FINDIT UGM 2024',
-    date: '24 Mei, 2024',
-    author: 'EVOP',
+    image: "/portofolio.png",
+    category: "UI/UX Designer",
+    title: "Top 5 Hackathon FINDIT UGM 2024",
+    date: "24 Mei, 2024",
+    author: "EVOP",
   },
   {
-    image: '/placeholder.svg',
-    category: 'UI/UX Designer',
-    title: 'Top 5 Hackathon FINDIT UGM 2024',
-    date: '24 Mei, 2024',
-    author: 'EVOP',
+    image: "/portofolio.png",
+    category: "UI/UX Designer",
+    title: "Top 5 Hackathon FINDIT UGM 2024",
+    date: "24 Mei, 2024",
+    author: "EVOP",
   },
-]
+];
 
 export function Portfolio() {
   return (
     <section className="py-24 bg-white">
       <div className="container">
         <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-4 py-1 bg-[#287eff]/10 text-[#287eff] rounded-full text-sm font-medium">
-            EVOP Works
+          <div className="h-[30px] pl-3 pr-3.5 py-1 bg-white rounded-full shadow-[0px_1px_2px_0px_rgba(13,13,18,0.04)] shadow-[0px_1px_3px_0px_rgba(13,13,18,0.05)] border border-[#dfe1e6] justify-center items-center gap-1.5 inline-flex">
+            <img src="portofolio-logo.png" alt="portofolio-logo" />
+            <p className="text-blue-500">EVOP Works</p>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d0d12]">
             Our Portfolio
           </h2>
           <p className="text-gray-600 text-lg">
-            Here are all our essential tips for getting your business project off
-            the ground.
+            Here are all our essential tips for getting your business project
+            off the ground.
           </p>
         </div>
 
@@ -73,19 +74,7 @@ export function Portfolio() {
             </Link>
           ))}
         </div>
-
-        <div className="mt-24 text-center space-y-4">
-          <div className="inline-block px-4 py-1 bg-[#287eff]/10 text-[#287eff] rounded-full text-sm font-medium">
-            Our Customers
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d0d12]">
-            See What Our
-            <br />
-            Customers Are Saying
-          </h2>
-        </div>
       </div>
     </section>
-  )
+  );
 }
-
