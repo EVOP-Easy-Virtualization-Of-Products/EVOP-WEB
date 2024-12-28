@@ -2,7 +2,7 @@ import { CuboidIcon as Cube, Sparkles, Zap } from "lucide-react";
 
 export function Hero() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative ">
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0"
@@ -15,7 +15,7 @@ export function Hero() {
         <div className="absolute inset-0" />
       </div>
       <div className="relative z-10 pt-32 pb-24 overflow-hidden">
-        <div className="container">
+        <div className="container items-center">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
@@ -39,7 +39,7 @@ export function Hero() {
             </div>
 
             <div className="lg:block">
-              <div className="w-4/5 h-[31.25rem] flex flex-col items-center justify-center h-screen bg-gray-900 bg-opacity-55 rounded-3xl">
+              <div className="w-4/5 h-[31.25rem] flex flex-col items-center justify-center bg-gray-900 bg-opacity-55 rounded-3xl">
                 <div className="w-96 h-[360px] bg-gray-500 rounded-lg shadow-md p-8 bg-opacity-65 rounded-3xl">
                   <div className="flex flex-col space-y-12 rounded-lg">
                     <div className="w-80 h-16 flex items-center justify-center bg-white text-black font-plus-jakarta font-bold p-2 rounded-xl text-lg">

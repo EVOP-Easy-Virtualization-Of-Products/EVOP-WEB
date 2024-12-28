@@ -8,7 +8,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'plus-jakarta': ['var(--font-plus-jakarta-sans)'],
+        sans: ['var(--font-plus-jakarta-sans)'],
+      },
+      fontWeight: {
+        thin: '200',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
       },
     },
   },
