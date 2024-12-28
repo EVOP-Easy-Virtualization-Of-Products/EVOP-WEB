@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import Link from 'next/link'
 
 const navigation = [
   { name: "Home", href: "#hero" },
@@ -73,7 +74,7 @@ export function Navbar() {
               >
                 <b>EVOP</b>
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}

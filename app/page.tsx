@@ -27,6 +27,12 @@ const Contact = dynamic(() => import('@/components/contact/Contact').then(mod =>
   loading: () => <div className="h-96 bg-white" />
 })
 
+const LatestNews = dynamic(() => import('@/components/latestnews/latest-news'), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
+
+
 const Footer = dynamic(() => import('@/components/footer/Footer').then(mod => ({ default: mod.Footer })), {
   loading: () => <div className="h-40" />
 })
@@ -37,9 +43,7 @@ export default function Home() {
       <main>
         <section id="hero">
           <Suspense fallback={<div className="h-screen " />}>
-            <AnimationWrapper>
               <Hero />
-            </AnimationWrapper>
           </Suspense>
         </section>
 
@@ -73,6 +77,12 @@ export default function Home() {
               <Testimonials />
             </AnimationWrapper>
           </Suspense>
+        </section>
+
+        <section id="latest-news">
+          <AnimationWrapper>
+            <LatestNews />
+          </AnimationWrapper>
         </section>
 
         <section id="contact">
