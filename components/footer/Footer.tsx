@@ -1,19 +1,19 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { Linkedin, Youtube, Twitter } from 'lucide-react'
+import Image from "next/image";
+import Link from "next/link";
+import { Linkedin, Youtube, Twitter } from "lucide-react";
 
 const footerLinks = [
-  { name: 'Privacy Policy', href: '/privacy-policy' },
-  { name: 'Cookies', href: '/cookies' },
-  { name: 'Security', href: '/security' },
-  { name: 'Legal Document', href: '/legal' },
-]
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Cookies", href: "/cookies" },
+  { name: "Security", href: "/security" },
+  { name: "Legal Document", href: "/legal" },
+];
 
 const socialLinks = [
-  { name: 'LinkedIn', icon: Linkedin, href: '#' },
-  { name: 'Twitter', icon: Twitter, href: '#' },
-  { name: 'YouTube', icon: Youtube, href: '#' },
-]
+  { name: "LinkedIn", icon: Linkedin, href: "#" },
+  { name: "Twitter", icon: Twitter, href: "#" },
+  { name: "YouTube", icon: Youtube, href: "#" },
+];
 
 export function Footer() {
   return (
@@ -26,8 +26,11 @@ export function Footer() {
               alt="EVOP"
               width={120}
               height={40}
-              className="h-10 w-auto"
+              className="h-8 w-auto"
             />
+            <p className="font-plus-jakarta font-bold text-2xl px-2 text-[#4AC3F3]">
+              EVOP
+            </p>
           </Link>
 
           <nav className="flex flex-wrap justify-center gap-6">
@@ -56,11 +59,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/10 text-center text-sm text-gray-400">
+        <div className="mt-8 pt-8 text-center text-sm text-gray-400">
           <p>© {new Date().getFullYear()} All rights reserved.</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
-

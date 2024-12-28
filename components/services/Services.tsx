@@ -1,46 +1,47 @@
-import { Globe, Smartphone, Users, Shield } from 'lucide-react'
+import { Globe, Smartphone, Users, Shield } from "lucide-react";
 
 const services = [
   {
-    icon: Globe,
-    title: 'Website Development',
+    image: "/services-logo1.png",
+    title: "Website Development",
     description:
-      'Create modern, responsive, and dynamic websites that enhance your online presence and deliver exceptional user experiences.',
+      "Create modern, responsive, and dynamic websites that enhance your online presence and deliver exceptional user experiences.",
   },
   {
-    icon: Smartphone,
-    title: 'Mobile Development',
+    image: "/services-logo2.png",
+    title: "Mobile Development",
     description:
-      'Build innovative and user-friendly mobile applications for both iOS and Android platforms to engage your customers on the go.',
+      "Build innovative and user-friendly mobile applications for both iOS and Android platforms to engage your customers on the go.",
   },
   {
-    icon: Users,
-    title: 'IT Consultant',
+    image: "/services-logo3.png",
+    title: "IT Consultant",
     description:
-      'Get expert advice to optimize your IT strategies, infrastructure, and operations for maximum efficiency and innovation.',
+      "Get expert advice to optimize your IT strategies, infrastructure, and operations for maximum efficiency and innovation.",
   },
   {
-    icon: Shield,
-    title: 'Cyber Security',
+    image: "/services-logo4.png",
+    title: "Cyber Security",
     description:
-      'Safeguard your digital assets with advanced cybersecurity solutions to protect against threats and ensure peace of mind.',
+      "Safeguard your digital assets with advanced cybersecurity solutions to protect against threats and ensure peace of mind.",
   },
-]
+];
 
 export function Services() {
   return (
     <section className="py-24 bg-[#f8fafb]">
       <div className="container">
         <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-4 py-1 bg-[#287eff]/10 text-[#287eff] rounded-full text-sm font-medium">
-            Why EVOP
+          <div className="h-[30px] pl-3 pr-3.5 py-1 bg-white rounded-full shadow-[0px_1px_2px_0px_rgba(13,13,18,0.04)] shadow-[0px_1px_3px_0px_rgba(13,13,18,0.05)] border border-[#dfe1e6] justify-center items-center gap-1.5 inline-flex ">
+            <img src="services.png" alt="" />
+            <p className="text-blue-500">Why EVOP</p>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d0d12]">
             Our Services
           </h2>
           <p className="text-gray-600 text-lg">
-            Transform your ideas into reality with our expert services tailored to
-            meet your business needs.
+            Transform your ideas into reality with our expert services tailored
+            to meet your business needs.
           </p>
         </div>
 
@@ -48,10 +49,10 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-2xl p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="w-14 h-14 bg-[#287eff] rounded-2xl flex items-center justify-center mb-6">
-                <service.icon className="w-7 h-7 text-white" />
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                <img src={service.image} alt="icon" />
               </div>
               <h3 className="text-2xl font-bold text-[#0d0d12] mb-4">
                 {service.title}
@@ -64,6 +65,5 @@ export function Services() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
