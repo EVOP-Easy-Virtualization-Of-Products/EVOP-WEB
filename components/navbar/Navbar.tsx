@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
-
+import Link from 'next/link'
 const navigation = [
-  { name: 'Home', href: '#hero' },
+  
   { name: 'Service', href: '#services' },
   { name: 'Why Us', href: '#why-us' },
   { name: 'Portofolio', href: '#portfolio' },
   { name: 'Contact', href: '#contact' },
+  { name: 'Blog', href: '#blog' },
 ]
 
 export function Navbar() {
@@ -46,12 +47,12 @@ export function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <a href="#hero" onClick={(e) => scrollToSection(e, '#hero')} className="flex items-center">
+            <Link href="/" className="flex items-center">
               <Image src="/logo.svg" alt="EVOP" width={120} height={40} className="h-6 w-auto" />
               <span className="font-bold text-[24px] leading-[130%] ml-2" style={{ fontFamily: 'Plus Jakarta Sans', color: '#4AC3F3' }}>
                 <b>EVOP</b>
               </span>
-            </a>
+            </Link>
           </div>
           
           {/* Desktop Navigation */}

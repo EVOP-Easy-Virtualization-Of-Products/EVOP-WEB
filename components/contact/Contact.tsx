@@ -13,11 +13,10 @@ export function Contact() {
               Have a project in mind or want to learn more about our services?
               We'd love to hear from you!
             </p>
-            <div className="h-[88px] p-5 bg-white rounded-2xl border-2 border-[#DFE1E7] flex-col justify-center items-center gap-6 inline-flex">
               <button className="bg-[#287eff] text-white px-20 py-3 rounded-full hover:bg-[#287eff]/90 transition-colors">
                 Contact Us
               </button>
-            </div>
+
           </div>
         </div>
       </section>

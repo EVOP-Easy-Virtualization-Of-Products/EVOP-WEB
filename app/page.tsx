@@ -79,7 +79,7 @@ export default function Home() {
           </Suspense>
         </section>
 
-        <section id="latest-news">
+        <section id="blog">
           <AnimationWrapper>
             <LatestNews />
           </AnimationWrapper>
