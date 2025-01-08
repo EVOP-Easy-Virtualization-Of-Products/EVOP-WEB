@@ -1,4 +1,3 @@
-import { Globe, Smartphone, Users, Shield } from "lucide-react";
 
 const services = [
   {
@@ -29,7 +28,9 @@ const services = [
 
 export function Services() {
   return (
-    <section className="py-24 bg-[#f8fafb]">
+    <section className="p-8 bg-[#ffffff]">
+      <div className="p-16 bg-gradient-to-b from-[#D4EFD]/10 to-white rounded-xl">
+
       <div className="container">
         <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
           <div className="h-[30px] pl-3 pr-3.5 py-1 bg-white rounded-full shadow-[0px_1px_2px_0px_rgba(13,13,18,0.04)] shadow-[0px_1px_3px_0px_rgba(13,13,18,0.05)] border border-[#dfe1e6] justify-center items-center gap-1.5 inline-flex ">
@@ -63,6 +64,7 @@ export function Services() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

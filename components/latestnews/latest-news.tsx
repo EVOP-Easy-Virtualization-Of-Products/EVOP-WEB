@@ -60,8 +60,8 @@ export default function LatestNews() {
       .filter(item => item.type === 'text')
       .map(item => item.value)
       .join(' ')
-      .replace(/[#*_`]/g, '') // Remove markdown characters
-      .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
+      .replace(/[#*_`]/g, '')
+      .replace(/\s+/g, ' ')
       .trim();
     return textContent.length > 100 ? textContent.substring(0, 100) + '...' : textContent;
   };
@@ -69,18 +69,20 @@ export default function LatestNews() {
   if (loading) {
     return <div className="h-96 flex items-center justify-center">Loading...</div>;
   }
+
   return (
     <section className="py-24 bg-gradient-to-b from-white to-gray-100">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-4 py-1 bg-[#287eff]/10 text-[#287eff] rounded-full text-sm font-medium">
-            Latest News
+          <div className="h-[30px] pl-3 pr-3.5 py-1 bg-white rounded-full shadow-[0px_1px_3px_0px_rgba(13,13,18,0.05)] border border-[#dfe1e6] justify-center items-center gap-1.5 inline-flex">
+            <Image width={16} height={16} src="/doc.svg" alt="doc.svg" />
+            <p className="text-blue-500 text-sm font-sans">EVOP Articles</p>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d0d12]">
-            Stay Updated with Our Blog
+            Blog
           </h2>
           <p className="text-gray-600 text-lg">
-            Discover the latest insights, trends, and updates in the world of technology.
+            Here are all our essential tips for getting your business project off the ground.
           </p>
         </div>
 
@@ -103,9 +105,9 @@ export default function LatestNews() {
           >
             {blogPosts.map((post) => (
               <SwiperSlide key={post.id}>
-                <Link href={`/blog/${post.id}`}>
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-[32rem] grid grid-rows-[12rem_1fr]">
-                    <div className="relative w-full h-full">
+                <div className="relative h-[520px] bg-white rounded-2xl overflow-hidden transition-all hover:-translate-y-1 hover:shadow-xl">
+                  <Link href={`/blog/${post.id}`} prefetch={false} className="block h-full">
+                    <div className="relative aspect-[16/9]">
                       <Image
                         src={getImageUrl(post.header_image)}
                         alt={post.name}
@@ -113,22 +115,36 @@ export default function LatestNews() {
                         className="object-cover"
                       />
                     </div>
-                    <div className="p-6 grid grid-rows-[auto_1fr_auto] h-full">
-                      <h3 className="text-xl font-bold text-[#0d0d12] mb-4 line-clamp-2">
-                        {post.name}
-                      </h3>
-                      <p className="text-gray-600 line-clamp-3">
-                        {getExcerpt(post.content)}
-                      </p>
-                      <div className="flex justify-between items-center text-sm text-gray-500 pt-4">
-                        <span className="bg-gray-100 px-2 py-1 rounded-full truncate max-w-[130px]">
+
+                    <div className="p-6 flex flex-col h-[calc(100%-36%)]">
+                      <div className='px-4 py-1 rounded-md inline-flex bg-[#1855F1]/5 w-fit'>
+                        <span className="text-[#1855F1] text-sm leading-tight">
                           {post.tags[0]}
                         </span>
-                        <span>{post.publish_date.toLocaleDateString()}</span>
+                      </div>
+                      
+                      <div className="mt-4">
+                        <h3 className="text-xl font-bold text-[#0d0d12] line-clamp-2">
+                          {post.name}
+                        </h3>
+                        <p className="mt-2 text-gray-600 line-clamp-3">
+                          {getExcerpt(post.content)}
+                        </p>
+                      </div>
+
+                      <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+                        <time className="text-sm text-gray-600">
+                          {post.publish_date.toLocaleDateString()}
+                        </time>
+                        <div className="px-5 py-2 bg-[#287eff] text-white rounded-lg shadow-[0px_3px_8px_0px_rgba(167,174,183,0.16)] border border-slate-100 hover:bg-[#287eff]/90 transition-colors">
+                          <span className="text-base font-semibold leading-7 tracking-tight">
+                            Read more
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>

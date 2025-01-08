@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Check } from "lucide-react";
+import { Check } from 'lucide-react';
+import Link from "next/link";
 
 const advantages = [
   {
@@ -18,50 +19,36 @@ const advantages = [
 
 export function WhyUs() {
   return (
-    <section className="py-24 relative">
+    <section className="py-16 md:py-24 relative">
       {/* Background Image */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("/Background.jpg")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
       />
 
-      <div className="container relative z-10">
-        <div className="h-[604px] justify-start items-center gap-24 inline-flex">
-          {/* <div className="relative rounded-3xl overflow-hidden ">
-            <div className="justify-center p-4">
-              <Image
-                src="/why-us.png"
-                alt="EVOP team collaboration"
-                width={600}
-                height={200}
-                className="w-2/3 object-cover"
-              />
-            </div>
-          </div> */}
-          <div className="w-[380px] h-[604px] flex-col justify-center items-center inline-flex pr-0">
-            <div className="w-[380px] h-[604px] px-[27px] py-10 bg-[#f8f9fb] rounded-[20px] flex-col justify-center items-center inline-flex overflow-hidden pr-0">
-              <img
-                className="w-[326px] h-[524px] rounded-2xl pr-0"
-                src="/why-us.png"
-              />
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="flex lg:flex-row items-center lg:gap-24">
+          <div className="w-full lg:w-1/2 max-w-lg">
+            <div className="bg-[#f8f9fb] rounded-[20px] p-4 lg:p-6 shadow-lg">
+              <div className="relative aspect-[326/524] rounded-2xl overflow-hidden">
+                <Image
+                  src="/why-us.png"
+                  alt="EVOP team collaboration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="space-y-8">
-            {/* <div className="inline-block px-4 py-1 bg-[#287eff]/10 text-[#287eff] rounded-full text-sm font-medium">
-              <img src="/pie-chart.png" alt="" />
-              Why Us
-            </div> */}
-
-            <div className="h-[30px] pl-3 pr-3.5 py-1 bg-white rounded-full border border-[#dfe1e6] justify-center items-center gap-1.5 inline-flex">
-              <img src="/pie-chart.png" alt="pie-chart" />
-              <div className="text-[#277eff] text-sm font-semibold font-['Plus Jakarta Sans']">
+          <div className="w-full lg:w-1/2 space-y-8">
+            <div className="inline-flex items-center px-3 py-1 bg-white rounded-full border border-[#dfe1e6] shadow-sm">
+              <Image src="/pie-chart.png" alt="pie chart" width={16} height={16} />
+              <span className="ml-1.5 text-[#277eff] text-sm font-semibold">
                 Why Us
-              </div>
+              </span>
             </div>
 
             <div className="space-y-4">
@@ -93,12 +80,16 @@ export function WhyUs() {
               ))}
             </div>
 
-            <button className="bg-[#287eff] text-white px-8 py-3 rounded-full hover:bg-[#287eff]/90 transition-colors">
+            <Link
+              href="/contact"
+              className="inline-block bg-[#287eff] text-white px-8 py-3 rounded-full hover:bg-[#287eff]/90 transition-colors"
+            >
               Contact Us
-            </button>
+            </Link>
           </div>
         </div>
       </div>
     </section>
   );
 }
+

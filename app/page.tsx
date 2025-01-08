@@ -81,7 +81,7 @@ export default function Home() {
 
         <section id="blog">
           <AnimationWrapper>
-            <LatestNews />
+            <LatestNews/>
           </AnimationWrapper>
         </section>
 
