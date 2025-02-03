@@ -1,5 +1,6 @@
-
-import { Check } from "lucide-react";
+import { Check } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 const advantages = [
   {
@@ -14,11 +15,11 @@ const advantages = [
     title: "End-to-End Support",
     description: "Comprehensive support throughout your project",
   },
-];
+]
 
 export function WhyUs() {
   return (
-    <section className="py-24 relative">
+    <section className="py-12 sm:py-24 overflow-auto">
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0"
@@ -29,51 +30,33 @@ export function WhyUs() {
         }}
       />
 
-      <div className="container relative z-10">
-        <div className="h-[604px] justify-start items-center gap-24 inline-flex">
-          {/* <div className="relative rounded-3xl overflow-hidden ">
-            <div className="justify-center p-4">
-              <Image
-                src="/why-us.png"
-                alt="EVOP team collaboration"
-                width={600}
-                height={200}
-                className="w-2/3 object-cover"
-              />
-            </div>
-          </div> */}
-          <div className="w-[380px] h-[604px] flex-col justify-center items-center inline-flex pr-0">
-            <div className="w-[380px] h-[604px] px-[27px] py-10 bg-[#f8f9fb] rounded-[20px] flex-col justify-center items-center inline-flex overflow-hidden pr-0">
-              <img
-                className="w-[326px] h-[524px] rounded-2xl pr-0"
-                src="/why-us.png"
-              />
+      <div className="container relative z-10 px-4">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-24">
+          {/* Image Container */}
+          <div className="w-full lg:w-auto">
+            <div className="bg-[#f8f9fb] rounded-[20px] p-4 max-w-[380px] mx-auto">
+              <div className="relative w-full aspect-[326/524] rounded-2xl overflow-hidden">
+                <Image src="/why-us.png" alt="EVOP team collaboration" fill className="object-cover" />
+              </div>
             </div>
           </div>
 
-          <div className="space-y-8">
-            {/* <div className="inline-block px-4 py-1 bg-[#287eff]/10 text-[#287eff] rounded-full text-sm font-medium">
-              <img src="/pie-chart.png" alt="" />
-              Why Us
-            </div> */}
-
-            <div className="h-[30px] pl-3 pr-3.5 py-1 bg-white rounded-full border border-[#dfe1e6] justify-center items-center gap-1.5 inline-flex">
-              <img src="/pie-chart.png" alt="pie-chart" />
-              <div className="text-[#277eff] text-sm font-semibold font-['Plus Jakarta Sans']">
-                Why Us
-              </div>
+          {/* Content Container */}
+          <div className="flex-1 space-y-8">
+            <div className="inline-flex items-center px-3 py-1 bg-white rounded-full border border-[#dfe1e6] shadow-sm">
+              <Image src="/pie-chart.png" alt="pie chart" width={16} height={16} />
+              <span className="ml-1.5 text-[#277eff] text-sm font-semibold">Why Us</span>
             </div>
 
             <div className="space-y-4">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d0d12] leading-tight">
                 The EVOP advantage:
-                <br />
+                <br className="hidden sm:block" />
                 Reasons to trust our expertise
               </h2>
-              <p className="text-gray-600 text-lg">
-                Our dedication to quality, innovation, and customer satisfaction
-                sets us apart. Here&apos;s why we are the right partner for your
-                technology needs:
+              <p className="text-gray-600 text-base sm:text-lg">
+                Our dedication to quality, innovation, and customer satisfaction sets us apart. Here&apos;s why we are
+                the right partner for your technology needs:
               </p>
             </div>
 
@@ -84,21 +67,24 @@ export function WhyUs() {
                     <Check className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-[#0d0d12] mb-1">
-                      {advantage.title}
-                    </h3>
-                    <p className="text-gray-600">{advantage.description}</p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-[#0d0d12] mb-1">{advantage.title}</h3>
+                    <p className="text-gray-600 text-base sm:text-lg">{advantage.description}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <button className="bg-[#287eff] text-white px-8 py-3 rounded-full hover:bg-[#287eff]/90 transition-colors">
+            <Link
+              href="http://wa.me/+6281249111169"
+              target="_blank"
+              className="inline-block bg-[#287eff] text-white px-6 sm:px-8 py-3 rounded-full hover:bg-[#287eff]/90 transition-colors"
+            >
               Contact Us
-            </button>
+            </Link>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
+
