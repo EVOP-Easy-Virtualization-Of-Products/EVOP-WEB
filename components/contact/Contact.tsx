@@ -7,15 +7,15 @@ export function Contact() {
               Contact Us
             </h2>
             <p className="text-gray-600 text-lg">
-              Let's Building Something Great Together!
+              Let&apos;s Building Something Great Together!
             </p>
             <p className="text-[#287eff] text-lg">
               Have a project in mind or want to learn more about our services?
-              We'd love to hear from you!
+              We&apos;d love to hear from you!
             </p>
-            <a href="mailto:evoptech@gmail.com" className="mb-12">
+            <a href="http://wa.me/+6281249111169" target="_blank" className="mb-12">
 
-              <button href="http://wa.me/+6281249111169" target="_blank" className="bg-[#287eff] text-white px-20 py-3 rounded-full hover:bg-[#287eff]/90 transition-colors">
+              <button className="bg-[#287eff] text-white px-20 py-3 rounded-full hover:bg-[#287eff]/90 transition-colors">
                 Contact Us
               </button>
             </a>

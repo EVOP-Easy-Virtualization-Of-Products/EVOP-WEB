@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import { Check } from "lucide-react";
 
 const advantages = [
@@ -72,7 +72,7 @@ export function WhyUs() {
               </h2>
               <p className="text-gray-600 text-lg">
                 Our dedication to quality, innovation, and customer satisfaction
-                sets us apart. Here's why we are the right partner for your
+                sets us apart. Here&apos;s why we are the right partner for your
                 technology needs:
               </p>
             </div>

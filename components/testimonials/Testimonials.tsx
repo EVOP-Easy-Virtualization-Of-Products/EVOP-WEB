@@ -50,7 +50,7 @@ export function Testimonials() {
             Customers Are Saying
           </h2>
           <p className="text-gray-600 text-lg">
-            Here's what some of our customers say about our platform.
+            Here&apos;s what some of our customers say about our platform.
           </p>
         </div>
 

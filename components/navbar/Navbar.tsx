@@ -16,6 +16,7 @@ const navigation = [
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isScrolled, setIsScrolled] = useState(false)
   const [language, setLanguage] = useState('en')
   const [dropdownOpen, setDropdownOpen] = useState(false)

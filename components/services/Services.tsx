@@ -1,4 +1,3 @@
-import { Globe, Smartphone, Users, Shield } from "lucide-react";
 
 const services = [
   {
