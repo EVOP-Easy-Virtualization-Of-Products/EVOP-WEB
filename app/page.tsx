@@ -23,9 +23,19 @@ const Testimonials = dynamic(() => import('@/components/testimonials/Testimonial
   loading: () => <div className="h-96 bg-gradient-to-br from-blue-50/50 to-purple-50/50" />
 })
 
+const OurTeam = dynamic(() => import('@/components/team/Ourteam').then(mod => ({ default: mod.OurTeam })), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
 const Contact = dynamic(() => import('@/components/contact/Contact').then(mod => ({ default: mod.Contact })), {
   loading: () => <div className="h-96 bg-white" />
 })
+
+const LatestNews = dynamic(() => import('@/components/latestnews/latest-news'), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
+
 
 const Footer = dynamic(() => import('@/components/footer/Footer').then(mod => ({ default: mod.Footer })), {
   loading: () => <div className="h-40" />
@@ -37,9 +47,7 @@ export default function Home() {
       <main>
         <section id="hero">
           <Suspense fallback={<div className="h-screen " />}>
-            <AnimationWrapper>
               <Hero />
-            </AnimationWrapper>
           </Suspense>
         </section>
 
@@ -73,6 +81,18 @@ export default function Home() {
               <Testimonials />
             </AnimationWrapper>
           </Suspense>
+        </section>
+
+        <section id="blog">
+          <AnimationWrapper>
+            <LatestNews/>
+          </AnimationWrapper>
+        </section>
+
+        <section id="team">
+          <AnimationWrapper>
+            <OurTeam/>
+          </AnimationWrapper>
         </section>
 
         <section id="contact">

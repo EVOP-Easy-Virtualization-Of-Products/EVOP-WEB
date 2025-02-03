@@ -28,8 +28,11 @@ export function Hero() {
                 startup established by a group of visionary students, focusing
                 on the development of cutting-edge technology
               </p>
-              <div className="flex flex-wrap gap-4">
-                <button className="bg-[#287eff] text-white px-6 py-3 rounded-full hover:bg-[#287eff]/90 transition-colors">
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                <Link 
+                  href="http://wa.me/+6281249111169" target="_blank"
+                  className="bg-[#287eff] text-white px-8 py-3 rounded-full hover:bg-[#287eff]/90 transition-all hover:scale-105 active:scale-95"
+                >
                   Contact Us
                 </button>
                 <button className="bg-white/10 text-white px-6 py-3 rounded-full hover:bg-white/20 transition-colors">

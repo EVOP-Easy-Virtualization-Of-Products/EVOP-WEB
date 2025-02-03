@@ -5,45 +5,24 @@ const testimonials = [
   {
     rating: 4.8,
     text: "EVOP transformed our outdated website into a modern platform that truly represents our brand. The process was seamless, and the results exceeded our expectations!",
-    author: "Kania Selmanita",
-    position: "Co-Founder, Heroes Digital",
-    avatar: "/testi.png",
+    author: "Helmi Said",
+    position: "Freelancer",
+    avatar: "/team/Helmi.png",
   },
   {
     rating: 4.8,
-    text: "Our mobile app was delivered on time and packed with features. EVOP's team understood our needs perfectly and brought our vision to life!",
-    author: "Kania Selmanita",
-    position: "Co-Founder, WoCommerce",
-    avatar: "/testi.png",
+    text: "After partnering with EVOP, we feel much more secure about our online systems. Their proactive approach to cybersecurity gave us peace of mind. They conducted a thorough security assessment and implemented robust security measures to protect our sensitive data. We are extremely satisfied with their expertise and professionalism.",
+    author: "Mardianta Putra S.kom",
+    position: "Cyber Security, Airlangga University",
+    avatar: "/client/mardianta.png",
   },
   {
     rating: 4.8,
-    text: "EVOP's IT consultancy helped streamline our operations and improved our team's productivity. Their expert guidance was a game-changer for us",
-    author: "Kania Selmanita",
-    position: "Product Designer",
-    avatar: "/testi.png",
-  },
-  {
-    rating: 4.8,
-    text: "After partnering with EVOP, we feel much more secure about our online systems. Their proactive approach to cybersecurity gave us peace of mind",
-    author: "Kania Selmanita",
-    position: "Co-Founder, Slack",
-    avatar: "/testi.png",
-  },
-  {
-    rating: 4.8,
-    text: "We were amazed at the quality of service EVOP provided at such reasonable rates. It's rare to find such value in the market.",
-    author: "Kania Selmanita",
-    position: "Co-Founder, Heroes Digital",
-    avatar: "/testi.png",
-  },
-  {
-    rating: 4.8,
-    text: "The EVOP team delivered our project faster than expected without compromising quality. Their efficiency is truly impressive!",
-    author: "Kania Selmanita",
-    position: "Marketing, Google",
-    avatar: "/testi.png",
-  },
+    text: "EVOP making our website using wordpress only for 10$! so cheap knowing us that just get started, and giving us oppurtunity to start a small bussiness from our campus.",
+    author: "Rejal Mahardika",
+    position: "Entrepreneur, Founder of Vendor UNAIR shop",
+    avatar: "/client/rejal.png",
+  }
 ];
 
 export function Testimonials() {
