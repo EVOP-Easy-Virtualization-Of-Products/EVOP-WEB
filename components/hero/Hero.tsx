@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -7,23 +7,23 @@ const features = [
   {
     icon: "/hero1.png",
     title: "Reliable Services",
-    alt: "Reliable Services Icon"
+    alt: "Reliable Services Icon",
   },
   {
     icon: "/hero2.png",
     title: "Affordable Pricing",
-    alt: "Affordable Pricing Icon"
+    alt: "Affordable Pricing Icon",
   },
   {
     icon: "/hero3.png",
     title: "Innovative Solutions",
-    alt: "Innovative Solutions Icon"
-  }
+    alt: "Innovative Solutions Icon",
+  },
 ];
 
 export function Hero() {
   return (
-    <div className="relative min-h-screen flex items-center">
+    <div className="min-h-screen flex items-center">
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0"
@@ -39,7 +39,7 @@ export function Hero() {
       <div className="relative z-10 w-full py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <motion.div
               className="space-y-8 text-center lg:text-left"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -53,19 +53,20 @@ export function Hero() {
                 Digital Solutions
               </h1>
               <p className="text-lg max-w-2xl mx-auto lg:mx-0 text-gray-200">
-                <span className="font-bold">EVOP SOFTWARE HOUSE</span>&nbsp; &nbsp; is a
-                startup established by a group of visionary students, focusing
-                on the development of cutting-edge technology
+                <span className="font-bold">EVOP SOFTWARE HOUSE</span>&nbsp;
+                &nbsp; is a startup established by a group of visionary
+                students, focusing on the development of cutting-edge technology
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <Link 
-                  href="http://wa.me/+6281249111169" target="_blank"
+                <Link
+                  href="http://wa.me/+6281249111169"
+                  target="_blank"
                   className="bg-[#287eff] text-white px-8 py-3 rounded-full hover:bg-[#287eff]/90 transition-all hover:scale-105 active:scale-95"
                 >
                   Contact Us
                 </Link>
                 <Link
-                  href="#services" 
+                  href="#services"
                   className="bg-white/10 text-white px-8 py-3 rounded-full hover:bg-white/20 transition-all hover:scale-105 active:scale-95 backdrop-blur-sm"
                 >
                   See our services
@@ -73,7 +74,7 @@ export function Hero() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="lg:block"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -107,7 +108,7 @@ export function Hero() {
 function FeatureCard({
   icon,
   title,
-  alt
+  alt,
 }: {
   icon: string;
   title: string;
@@ -116,12 +117,7 @@ function FeatureCard({
   return (
     <div className="bg-white rounded-xl p-4 flex items-center space-x-4 hover:scale-[1.02] transition-transform">
       <div className="relative w-8 h-8">
-        <Image
-          src={icon}
-          alt={alt}
-          fill
-          className="object-contain"
-        />
+        <Image src={icon} alt={alt} fill className="object-contain" />
       </div>
       <h3 className="text-[#0d0d12] font-semibold flex-1">{title}</h3>
     </div>

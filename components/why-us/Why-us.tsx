@@ -1,6 +1,6 @@
-import { Check } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { Check } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const advantages = [
   {
@@ -15,11 +15,11 @@ const advantages = [
     title: "End-to-End Support",
     description: "Comprehensive support throughout your project",
   },
-]
+];
 
 export function WhyUs() {
   return (
-    <section className="py-12 sm:py-24 overflow-auto">
+    <section className="relative py-12 sm:py-24 overflow-auto">
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0"
@@ -33,19 +33,22 @@ export function WhyUs() {
       <div className="container relative z-10 px-4">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-24">
           {/* Image Container */}
-          <div className="w-full lg:w-auto">
-            <div className="bg-[#f8f9fb] rounded-[20px] p-4 max-w-[380px] mx-auto">
-              <div className="relative w-full aspect-[326/524] rounded-2xl overflow-hidden">
-                <Image src="/why-us.png" alt="EVOP team collaboration" fill className="object-cover" />
-              </div>
-            </div>
+          <div className="width: 380px; height: 604px; padding-left: 27px; padding-right: 27px; padding-top: 40px; padding-bottom: 40px; background: #F8FAFB; border-radius: 20px; overflow: hidden; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+            <Image src="/why-us.png" alt="Why Us" width={326} height={524} />
           </div>
 
           {/* Content Container */}
           <div className="flex-1 space-y-8">
             <div className="inline-flex items-center px-3 py-1 bg-white rounded-full border border-[#dfe1e6] shadow-sm">
-              <Image src="/pie-chart.png" alt="pie chart" width={16} height={16} />
-              <span className="ml-1.5 text-[#277eff] text-sm font-semibold">Why Us</span>
+              <Image
+                src="/pie-chart.png"
+                alt="pie chart"
+                width={16}
+                height={16}
+              />
+              <span className="ml-1.5 text-[#277eff] text-sm font-semibold">
+                Why Us
+              </span>
             </div>
 
             <div className="space-y-4">
@@ -55,8 +58,9 @@ export function WhyUs() {
                 Reasons to trust our expertise
               </h2>
               <p className="text-gray-600 text-base sm:text-lg">
-                Our dedication to quality, innovation, and customer satisfaction sets us apart. Here&apos;s why we are
-                the right partner for your technology needs:
+                Our dedication to quality, innovation, and customer satisfaction
+                sets us apart. Here&apos;s why we are the right partner for your
+                technology needs:
               </p>
             </div>
 
@@ -67,8 +71,12 @@ export function WhyUs() {
                     <Check className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-[#0d0d12] mb-1">{advantage.title}</h3>
-                    <p className="text-gray-600 text-base sm:text-lg">{advantage.description}</p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-[#0d0d12] mb-1">
+                      {advantage.title}
+                    </h3>
+                    <p className="text-gray-600 text-base sm:text-lg">
+                      {advantage.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -85,6 +93,5 @@ export function WhyUs() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
