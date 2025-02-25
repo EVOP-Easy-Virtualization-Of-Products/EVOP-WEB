@@ -49,7 +49,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
+            <Link href="/#hero" className="flex items-center">
               <Image src="/logo.svg" alt="EVOP" width={120} height={40} className="h-6 w-auto" />
               <span className="font-bold text-lg sm:text-2xl ml-2 text-[#4AC3F3]">
                 EVOP
