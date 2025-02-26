@@ -67,41 +67,7 @@ export default function Home() {
           </Suspense>
         </section>
 
-        <section id="portfolio">
-          <Suspense fallback={<div className="h-96 bg-white" />}>
-            <AnimationWrapper>
-              <Portfolio />
-            </AnimationWrapper>
-          </Suspense>
-        </section>
 
-        <section id="testimonials">
-          <Suspense fallback={<div className="h-96 bg-gradient-to-br from-blue-50/50 to-purple-50/50" />}>
-            <AnimationWrapper>
-              <Testimonials />
-            </AnimationWrapper>
-          </Suspense>
-        </section>
-
-        <section id="blog">
-          <AnimationWrapper>
-            <LatestNews/>
-          </AnimationWrapper>
-        </section>
-
-        <section id="team">
-          <AnimationWrapper>
-            <OurTeam/>
-          </AnimationWrapper>
-        </section>
-
-        <section id="contact">
-          <Suspense fallback={<div className="h-96 bg-white" />}>
-            <AnimationWrapper>
-              <Contact />
-            </AnimationWrapper>
-          </Suspense>
-        </section>
       </main>
 
       <Suspense fallback={<div className="h-40" />}>
