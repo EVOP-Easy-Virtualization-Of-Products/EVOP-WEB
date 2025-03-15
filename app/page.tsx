@@ -15,6 +15,26 @@ const WhyUs = dynamic(() => import('@/components/why-us/Why-us').then(mod => ({ 
   loading: () => <div className="h-96 bg-gradient-to-br from-white to-blue-50/50" />
 })
 
+const Portfolio = dynamic(() => import('@/components/portfolio/Portfolio').then(mod => ({ default: mod.Portfolio })), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
+const Testimonials = dynamic(() => import('@/components/testimonials/Testimonials').then(mod => ({ default: mod.Testimonials })), {
+  loading: () => <div className="h-96 bg-gradient-to-br from-blue-50/50 to-purple-50/50" />
+})
+
+const OurTeam = dynamic(() => import('@/components/team/Ourteam').then(mod => ({ default: mod.OurTeam })), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
+const Contact = dynamic(() => import('@/components/contact/Contact').then(mod => ({ default: mod.Contact })), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
+const LatestNews = dynamic(() => import('@/components/latestnews/latest-news'), {
+  loading: () => <div className="h-96 bg-white" />
+})
+
 
 
 const Footer = dynamic(() => import('@/components/footer/Footer').then(mod => ({ default: mod.Footer })), {
@@ -47,7 +67,41 @@ export default function Home() {
           </Suspense>
         </section>
 
+        <section id="portfolio">
+          <Suspense fallback={<div className="h-96 bg-white" />}>
+            <AnimationWrapper>
+              <Portfolio />
+            </AnimationWrapper>
+          </Suspense>
+        </section>
 
+        <section id="testimonials">
+          <Suspense fallback={<div className="h-96 bg-gradient-to-br from-blue-50/50 to-purple-50/50" />}>
+            <AnimationWrapper>
+              <Testimonials />
+            </AnimationWrapper>
+          </Suspense>
+        </section>
+
+        <section id="blog">
+          <AnimationWrapper>
+            <LatestNews/>
+          </AnimationWrapper>
+        </section>
+
+        <section id="team">
+          <AnimationWrapper>
+            <OurTeam/>
+          </AnimationWrapper>
+        </section>
+
+        <section id="contact">
+          <Suspense fallback={<div className="h-96 bg-white" />}>
+            <AnimationWrapper>
+              <Contact />
+            </AnimationWrapper>
+          </Suspense>
+        </section>
       </main>
 
       <Suspense fallback={<div className="h-40" />}>
