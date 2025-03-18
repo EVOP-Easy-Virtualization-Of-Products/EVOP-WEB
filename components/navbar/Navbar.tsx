@@ -15,12 +15,13 @@ const navigation = [
 ]
 
 export function Navbar() {
+ 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isScrolled, setIsScrolled] = useState(false)
   const [language, setLanguage] = useState('en')
   const [dropdownOpen, setDropdownOpen] = useState(false)
-
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
@@ -43,7 +44,9 @@ export function Navbar() {
     setDropdownOpen(false)
     // Implement logic to change the language of the website
   }
-
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []); // Only render dynamic content after mount
+  if (!mounted) return null; 
   return (
     <nav className='fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0d0d12]/90 backdrop-blur-sm'>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

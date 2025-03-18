@@ -53,7 +53,7 @@ export function Hero() {
                 Digital Solutions
               </h1>
               <p className="text-lg max-w-2xl mx-auto lg:mx-0 text-gray-200">
-                <span className="font-bold">EVOP SOFTWARE HOUSE</span>&nbsp;
+                <span className="font-bold">EVOP (Easy Virtualization Of Products) Tech</span>&nbsp;
                 &nbsp; is a startup established by a group of visionary
                 students, focusing on the development of cutting-edge technology
               </p>
