@@ -14,7 +14,7 @@ const teamMembers: TeamMember[] = [
   { name: "Nouval Aryanta", role: "Cyber Security at EVOP", image: "/team/Nouval.png" },
   { name: "Ahmad Lazim", role: "Fullstack Developer", image: "/team/Lazim.png" },
   { name: "Abdul Alim", role: "Fullstack Developer at EVOP", image: "/team/Aliem.png" },
-  { name: "George Misael", role: "Fullstack Developer at EVOP", image: "/team/George.png" },
+  { name: "George Misael", role: "Marketing Specialist at EVOP", image: "/team/George.png" },
 ]
 
 export function OurTeam() {
