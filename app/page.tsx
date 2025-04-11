@@ -66,9 +66,7 @@ export default function Home() {
             </AnimationWrapper>
           </Suspense>
         </section>
-
         
-
         <section id="blog">
           <AnimationWrapper>
             <LatestNews/>

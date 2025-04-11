@@ -35,7 +35,7 @@ export default function LatestNews() {
     return (
       <section className="py-24 bg-gradient-to-b from-white to-gray-100">
         <div className="container mx-auto px-4 text-center">
-          Loading...
+          <p className="text-gray-600">Loading latest articles...</p>
         </div>
       </section>
     )
@@ -50,28 +50,32 @@ export default function LatestNews() {
               width={16}
               height={16}
               src="/portofolio-logo.png"
-              alt="Article EVOP"
+              alt="EVOP Latest Articles Logo"
             />
-            <p className="text-blue-500 text-sm font-sans">EVOP Articles</p>
+            <p className="text-blue-500 text-sm font-sans">Latest Articles</p>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d0d12]">
-            Blog
+            Latest from Our Blog
           </h2>
           <p className="text-gray-600 text-lg">
-            Here are all our essential tips for getting your business project
-            off the ground.
+            Stay updated with our latest insights and expert tips
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <AnimationWrapper key={post.id}>
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                <Link href={`/blog/${post.id}`} className="block">
+                <Link 
+                  href={`/blog/${post.id}`} 
+                  className="block"
+                  title={`Read full article: ${post.title}`}
+                  aria-label={`Read ${post.title} - ${post.description}`}
+                >
                   <div className="relative h-48 w-full">
                     <Image
                       src={post.image}
-                      alt={post.title}
+                      alt={`Featured image for article: ${post.title}`}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-300"
                     />
@@ -83,19 +87,27 @@ export default function LatestNews() {
                       Article
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-[#0d0d12] mb-2 line-clamp-2">
-                    {post.title}
-                  </h3>
+                  <Link 
+                    href={`/blog/${post.id}`}
+                    className="block"
+                    title={`Read full article: ${post.title}`}
+                  >
+                    <h3 className="text-xl font-bold text-[#0d0d12] mb-2 line-clamp-2 hover:text-[#287eff] transition-colors">
+                      {post.title}
+                    </h3>
+                  </Link>
                   <p className="text-gray-600 mb-4 line-clamp-2">
                     {post.description}
                   </p>
                   <div className="flex items-center justify-between">
-                    <time className="text-sm text-gray-600">{post.date}</time>
+                    <time className="text-sm text-gray-600" dateTime={post.date}>{post.date}</time>
                     <Link
                       href={`/blog/${post.id}`}
                       className="px-5 py-2 bg-[#287eff] text-white rounded-lg shadow-[0px_3px_8px_0px_rgba(167,174,183,0.16)] border border-slate-100 hover:bg-[#287eff]/90 transition-colors"
+                      title={`Continue reading ${post.title}`}
+                      aria-label={`Read full article about ${post.title}`}
                     >
-                      Read more
+                      Read full article
                     </Link>
                   </div>
                 </div>
@@ -103,13 +115,17 @@ export default function LatestNews() {
             </AnimationWrapper>
           ))}
         </div>
-
-        <div className="text-center">
+        
+        {/* View All Button */}
+        <div className="text-center mt-12">
           <Link
             href="/blog"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-[#287eff] to-[#1855F1] text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
+            className="px-8 py-3 bg-[#287eff] text-white rounded-lg shadow-[0px_3px_8px_0px_rgba(167,174,183,0.16)] border border-slate-100 hover:bg-[#287eff]/90 transition-colors inline-flex items-center gap-2"
           >
             View All Articles
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
           </Link>
         </div>
       </div>

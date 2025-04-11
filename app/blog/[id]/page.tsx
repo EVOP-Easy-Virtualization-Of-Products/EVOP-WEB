@@ -1,9 +1,7 @@
 import { getPostById } from '@/lib/blog'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import MarkdownIt from 'markdown-it'
 
 interface BlogPostPageProps {
   params: {
@@ -13,10 +11,17 @@ interface BlogPostPageProps {
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getPostById(params.id)
+  const md = new MarkdownIt({
+    html: true,
+    linkify: true,
+    typographer: true
+  })
 
   if (!post) {
     notFound()
   }
+
+  const contentHtml = md.render(post.content)
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 pt-24">
@@ -34,11 +39,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
 
           <div className="relative h-[400px] w-full mb-8 rounded-2xl overflow-hidden">
-            <Image
+            <img
               src={post.image}
               alt={post.title}
-              fill
-              className="object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
 
@@ -52,28 +56,16 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         {/* Content */}
-        <article className="prose lg:prose-xl mx-auto bg-white rounded-2xl shadow-lg p-8 sm:p-12">
-          <ReactMarkdown 
-            remarkPlugins={[remarkGfm]}
-            components={{
-              img: (props) => (
-                <div className="relative w-full h-64 my-8">
-                  <Image
-                    src={props.src || ''}
-                    alt={props.alt || ''}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              ),
-            }}
-          >
-            {post.content}
-          </ReactMarkdown>
+        <article className="prose prose-lg lg:prose-xl prose-headings:text-[#0d0d12] prose-p:text-gray-600 prose-a:text-[#287eff] hover:prose-a:text-[#1855F1] prose-img:rounded-xl prose-img:shadow-lg mx-auto bg-white rounded-2xl shadow-lg p-8 sm:p-12 max-w-4xl mb-12">
+          <div 
+            dangerouslySetInnerHTML={{ 
+              __html: contentHtml
+            }} 
+          />
         </article>
 
         {/* Footer */}
-        <div className="max-w-4xl mx-auto mt-12 text-center">
+        <div className="max-w-4xl mx-auto pb-12 text-center">
           <Link
             href="/blog"
             className="inline-block px-8 py-3 bg-gradient-to-r from-[#287eff] to-[#1855F1] text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
