@@ -1,49 +1,15 @@
-'use client'
-
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { AnimationWrapper } from '../animation-wrapper'
+import { getAllPosts } from '@/lib/blog'
+import { AnimationWrapper } from '@/components/animation-wrapper'
 
-interface BlogPost {
-  id: string
-  title: string
-  image: string
-  date: string
-  description: string
-}
-
-export default function LatestNews() {
-  const [posts, setPosts] = useState<BlogPost[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetch('/api/blog')
-      .then(res => res.json())
-      .then(data => {
-        // Only take the first 3 posts
-        setPosts(data.slice(0, 3))
-        setLoading(false)
-      })
-      .catch(error => {
-        console.error('Error fetching blog posts:', error)
-        setLoading(false)
-      })
-  }, [])
-
-  if (loading) {
-    return (
-      <section className="py-24 bg-gradient-to-b from-white to-gray-100">
-        <div className="container mx-auto px-4 text-center">
-          Loading...
-        </div>
-      </section>
-    )
-  }
+export default function BlogPage() {
+  const posts = getAllPosts()
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-gray-100">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 pt-24">
       <div className="container mx-auto px-4">
+        {/* Header */}
         <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
           <div className="h-[30px] pl-3 pr-3.5 py-1 bg-white rounded-full shadow-[0px_1px_3px_0px_rgba(13,13,18,0.05)] border border-[#dfe1e6] justify-center items-center gap-1.5 inline-flex">
             <Image
@@ -54,15 +20,16 @@ export default function LatestNews() {
             />
             <p className="text-blue-500 text-sm font-sans">EVOP Articles</p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d0d12]">
-            Blog
-          </h2>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d0d12]">
+            Our Blog Posts
+          </h1>
           <p className="text-gray-600 text-lg">
             Here are all our essential tips for getting your business project
             off the ground.
           </p>
         </div>
 
+        {/* Blog Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
           {posts.map((post) => (
             <AnimationWrapper key={post.id}>
@@ -70,7 +37,7 @@ export default function LatestNews() {
                 <Link href={`/blog/${post.id}`} className="block">
                   <div className="relative h-48 w-full">
                     <Image
-                      src={post.image}
+                      src="/blog-placeholder.jpg"
                       alt={post.title}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-300"
@@ -83,9 +50,9 @@ export default function LatestNews() {
                       Article
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-[#0d0d12] mb-2 line-clamp-2">
+                  <h2 className="text-xl font-bold text-[#0d0d12] mb-2 line-clamp-2">
                     {post.title}
-                  </h3>
+                  </h2>
                   <p className="text-gray-600 mb-4 line-clamp-2">
                     {post.description}
                   </p>
@@ -103,16 +70,7 @@ export default function LatestNews() {
             </AnimationWrapper>
           ))}
         </div>
-
-        <div className="text-center">
-          <Link
-            href="/blog"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-[#287eff] to-[#1855F1] text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
-          >
-            View All Articles
-          </Link>
-        </div>
       </div>
-    </section>
+    </div>
   )
 }
