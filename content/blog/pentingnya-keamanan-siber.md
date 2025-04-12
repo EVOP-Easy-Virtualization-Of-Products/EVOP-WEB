@@ -2,12 +2,11 @@
 title: "Pentingnya Keamanan Siber untuk Website Bisnis Anda"
 date: "2024-04-10"
 description: "Pelajari mengapa keamanan siber sangat penting untuk website bisnis dan bagaimana melindungi aset digital Anda dari ancaman cyber."
-image: "/blog/cyber-security.jpg"
+image: "/cyber-security.jpg"
 ---
 
 # Pentingnya Keamanan Siber untuk Website Bisnis Anda
 
-<img src="/blog/cyber-security.jpg" alt="Keamanan Siber untuk Bisnis" />
 
 Di era digital saat ini, keamanan siber menjadi aspek krusial dalam menjalankan bisnis online. Website bisnis Anda adalah aset berharga yang perlu dilindungi dari berbagai ancaman cyber.
 
@@ -23,13 +22,14 @@ Keamanan siber bukan hanya tentang melindungi data, tapi juga tentang:
 
 ### 1. Serangan yang Sering Terjadi
 
-<img src="/blog/cyber-threats.jpg" alt="Ancaman Siber Umum" />
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OH35UAqHLi0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 - Malware dan Ransomware
 - Phishing
 - DDoS (Distributed Denial of Service)
 - SQL Injection
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/khX7-m_Yi-E?si=gl_jR6b49joEJkEl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### 2. Dampak Serangan Siber
 

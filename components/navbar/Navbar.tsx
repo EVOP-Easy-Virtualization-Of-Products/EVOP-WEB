@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
 const navigation = [
   { name: "Service", href: "/#services" },
@@ -21,7 +21,7 @@ export function Navbar() {
   const [language, setLanguage] = useState("en");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
-  const isHomePage = pathname === '/';
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,21 +36,21 @@ export function Navbar() {
     href: string
   ) => {
     e.preventDefault();
-    
+
     // If it's not the home page and the link is not for blog, navigate to home first
-    if (!isHomePage && !href.startsWith('/blog')) {
+    if (!isHomePage && !href.startsWith("/blog")) {
       window.location.href = href;
       return;
     }
 
     // If it's a blog link or any other full URL, navigate normally
-    if (href.startsWith('/blog') || href.startsWith('http')) {
+    if (href.startsWith("/blog") || href.startsWith("http")) {
       window.location.href = href;
       return;
     }
 
     // For home page sections, scroll smoothly
-    const element = document.querySelector(href.replace('/', ''));
+    const element = document.querySelector(href.replace("/", ""));
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
@@ -98,57 +98,6 @@ export function Navbar() {
                 {item.name}
               </a>
             ))}
-
-            <div className="relative">
-              <button
-                className="flex items-center justify-between space-x-2 text-gray-300 hover:bg-gray-600 hover:transition-transform bg-[#36373F] px-[26px] py-[10px] rounded-full text-sm"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                <Image
-                  src={
-                    language === "en"
-                      ? "/bahasa/inggris.jpg"
-                      : "/bahasa/indo.jpg"
-                  }
-                  alt={language === "en" ? "UK Flag" : "Indonesia Flag"}
-                  width={20}
-                  height={20}
-                  className="rounded-full"
-                />
-                <span>{language === "en" ? "EN" : "ID"}</span>
-                <ChevronDown className="h-4 w-4 text-white" />
-              </button>
-              {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-36 bg-gray-600 rounded-lg shadow-lg">
-                  <button
-                    onClick={() => handleLanguageChange("en")}
-                    className="flex items-center space-x-2 p-2 w-full rounded-lg text-left text-gray-300 hover:bg-gray-500"
-                  >
-                    <Image
-                      src="/bahasa/inggris.jpg"
-                      alt="UK Flag"
-                      width={20}
-                      height={20}
-                      className="rounded-full"
-                    />
-                    <span>EN</span>
-                  </button>
-                  <button
-                    onClick={() => handleLanguageChange("id")}
-                    className="flex items-center space-x-2 p-2 w-full rounded-lg text-left text-gray-300 hover:bg-gray-500"
-                  >
-                    <Image
-                      src="/bahasa/indo.jpg"
-                      alt="Indonesia Flag"
-                      width={20}
-                      height={20}
-                      className="rounded-full"
-                    />
-                    <span>ID</span>
-                  </button>
-                </div>
-              )}
-            </div>
 
             <a
               href="http://wa.me/+6281249111169"
