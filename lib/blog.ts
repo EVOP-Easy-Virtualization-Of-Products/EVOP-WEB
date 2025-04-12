@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import path from 'path'
 import matter from 'gray-matter'
 
@@ -13,12 +13,12 @@ export interface BlogPost {
   image: string
 }
 
-export function getAllPosts(): BlogPost[] {
-  const fileNames = fs.readdirSync(postsDirectory)
-  const allPostsData = fileNames.map((fileName) => {
+export async function getAllPosts(): Promise<BlogPost[]> {
+  const fileNames = await fs.readdir(postsDirectory)
+  const allPostsData = await Promise.all(fileNames.map(async (fileName) => {
     const id = fileName.replace(/\.md$/, '')
     const fullPath = path.join(postsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const fileContents = await fs.readFile(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
     return {
@@ -29,15 +29,15 @@ export function getAllPosts(): BlogPost[] {
       content,
       image: data.image || '/blog-placeholder.jpg'
     }
-  })
+  }))
 
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))
 }
 
-export function getPostById(id: string): BlogPost | null {
+export async function getPostById(id: string): Promise<BlogPost | null> {
   try {
     const fullPath = path.join(postsDirectory, `${id}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const fileContents = await fs.readFile(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
     return {
