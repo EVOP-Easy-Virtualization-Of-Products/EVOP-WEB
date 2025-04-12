@@ -27,7 +27,7 @@ export async function GET() {
     const sortedPosts = allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))
     
     return NextResponse.json(sortedPosts)
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: 'Failed to fetch blog posts' },
       { status: 500 }

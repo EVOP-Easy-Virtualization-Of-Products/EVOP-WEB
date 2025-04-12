@@ -17,19 +17,10 @@ const navigation = [
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [language, setLanguage] = useState("en");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
