@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -17,8 +17,6 @@ const navigation = [
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("en");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
@@ -46,12 +44,6 @@ export function Navbar() {
       element.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
     }
-  };
-
-  const handleLanguageChange = (lang: string) => {
-    setLanguage(lang);
-    setDropdownOpen(false);
-    // Implement logic to change the language of the website
   };
 
   const [mounted, setMounted] = useState(false);
@@ -125,72 +117,19 @@ export function Navbar() {
             : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <div className="px-4 pt-2 pb-3 space-y-1">
+        <div className="pt-2 pb-3 space-y-1 bg-[#0d0d12]">
           {navigation.map((item) => (
             <a
               key={item.name}
               href={item.href}
               onClick={(e) => scrollToSection(e, item.href)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
+              className="block px-4 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
             >
               {item.name}
             </a>
           ))}
 
-          <div className="relative px-3 py-2">
-            <button
-              className="flex items-center justify-between w-full text-gray-300 bg-[#36373F] px-3 py-2 rounded-md"
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-            >
-              <div className="flex items-center space-x-2">
-                <Image
-                  src={
-                    language === "en"
-                      ? "/bahasa/inggris.jpg"
-                      : "/bahasa/indo.jpg"
-                  }
-                  alt={language === "en" ? "UK Flag" : "Indonesia Flag"}
-                  width={20}
-                  height={20}
-                  className="rounded-full"
-                />
-                <span>{language === "en" ? "EN" : "ID"}</span>
-              </div>
-              <ChevronDown className="h-4 w-4 text-white" />
-            </button>
-            {dropdownOpen && (
-              <div className="mt-2 w-full bg-[#36373F] rounded-md shadow-lg">
-                <button
-                  onClick={() => handleLanguageChange("en")}
-                  className="flex items-center rounded-md space-x-2 p-2 w-full text-left text-gray-300 hover:bg-gray-600"
-                >
-                  <Image
-                    src="/bahasa/inggris.jpg"
-                    alt="UK Flag"
-                    width={20}
-                    height={20}
-                    className="rounded-full"
-                  />
-                  <span>EN</span>
-                </button>
-                <button
-                  onClick={() => handleLanguageChange("id")}
-                  className="flex items-center rounded-md space-x-2 p-2 w-full text-left text-gray-300 hover:bg-gray-600"
-                >
-                  <Image
-                    src="/bahasa/indo.jpg"
-                    alt="Indonesia Flag"
-                    width={20}
-                    height={20}
-                    className="rounded-full"
-                  />
-                  <span>ID</span>
-                </button>
-              </div>
-            )}
-          </div>
-
-          <div className="px-3 py-2">
+          <div className="px-4 py-2">
             <a
               href="http://wa.me/+6281249111169"
               target="_blank"
