@@ -72,8 +72,11 @@ async function BlogPostContent({ id }: { id: string }) {
           className="prose prose-base sm:prose-lg lg:prose-xl 
           prose-headings:text-[#0d0d12] 
           prose-h1:text-2xl sm:prose-h1:text-3xl md:prose-h1:text-4xl
+          prose-h1:text-center prose-h1:mb-8
           prose-h2:text-xl sm:prose-h2:text-2xl md:prose-h2:text-3xl
+          prose-h2:text-center prose-h2:mb-6
           prose-h3:text-lg sm:prose-h3:text-xl md:prose-h3:text-2xl
+          prose-h3:text-center prose-h3:mb-4
           prose-p:text-gray-600 
           prose-p:text-sm sm:prose-p:text-base md:prose-p:text-lg
           prose-a:text-[#287eff] hover:prose-a:text-[#1855F1] 
