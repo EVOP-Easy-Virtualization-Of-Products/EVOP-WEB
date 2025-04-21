@@ -1,8 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts } from "@/lib/blog";
 import { AnimationWrapper } from "@/components/animation-wrapper";
 import type { Metadata } from "next";
+import BlogFilter from "@/components/blog/BlogFilter";
 
 export const metadata: Metadata = {
   title: "EVOP Blog - Latest Articles and Insights",
@@ -24,7 +24,7 @@ export default async function BlogPage() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <AnimationWrapper>
-          <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
+          <div className="text-center space-y-4 max-w-3xl mx-auto mb-12">
             <div className="h-[30px] pl-3 pr-3.5 py-1 bg-white rounded-full shadow-[0px_1px_3px_0px_rgba(13,13,18,0.05)] border border-[#dfe1e6] justify-center items-center gap-1.5 inline-flex">
               <Image
                 width={16}
@@ -44,65 +44,14 @@ export default async function BlogPage() {
           </div>
         </AnimationWrapper>
 
-        {/* Blog Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
-          {posts.map((post) => (
-            <AnimationWrapper key={post.id}>
-              <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                <Link
-                  href={`/blog/${post.id}`}
-                  className="block"
-                  title={`Read full article: ${post.title}`}
-                  aria-label={`Read ${post.title} - ${post.description}`}
-                >
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src={post.image || "/placeholder.svg"}
-                      alt={`Featured image for article: ${post.title}`}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                </Link>
-                <div className="p-6">
-                  <div className="px-4 py-1 rounded-md inline-flex bg-[#1855F1]/5 w-fit mb-4">
-                    <span className="text-[#1855F1] text-sm leading-tight">
-                      Article
-                    </span>
-                  </div>
-                  <Link
-                    href={`/blog/${post.id}`}
-                    className="block"
-                    title={`Read full article: ${post.title}`}
-                  >
-                    <h2 className="text-xl font-bold text-[#0d0d12] mb-2 line-clamp-2 hover:text-[#287eff] transition-colors">
-                      {post.title}
-                    </h2>
-                  </Link>
-                  <p className="text-gray-600 mb-4 line-clamp-2">
-                    {post.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <time
-                      className="text-sm text-gray-600"
-                      dateTime={post.date}
-                    >
-                      {post.date}
-                    </time>
-                    <Link
-                      href={`/blog/${post.id}`}
-                      className="px-5 py-2 bg-[#287eff] text-white rounded-lg shadow-[0px_3px_8px_0px_rgba(167,174,183,0.16)] border border-slate-100 hover:bg-[#287eff]/90 transition-colors"
-                      title={`Continue reading ${post.title}`}
-                      aria-label={`Read full article about ${post.title}`}
-                    >
-                      Read full article
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </AnimationWrapper>
-          ))}
-        </div>
+        {/* Filter */}
+        <AnimationWrapper>
+          <div className="flex justify-center mb-8">
+            <BlogFilter initialPosts={posts} />
+          </div>
+        </AnimationWrapper>
+
+        {/* Blog Grid will be rendered by the BlogFilter component */}
       </div>
     </div>
   );

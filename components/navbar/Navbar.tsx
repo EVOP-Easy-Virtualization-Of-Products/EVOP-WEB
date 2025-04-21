@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const navigation = [
   { name: "Service", href: "/#services" },
@@ -18,6 +18,7 @@ const navigation = [
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const isHomePage = pathname === "/";
 
   const scrollToSection = (
@@ -32,8 +33,15 @@ export function Navbar() {
       return;
     }
 
-    // If it's a blog link or any other full URL, navigate normally
-    if (href.startsWith("/blog") || href.startsWith("http")) {
+    // If it's a blog link, use Next.js router for client-side navigation
+    if (href.startsWith("/blog")) {
+      router.push(href);
+      setMobileMenuOpen(false);
+      return;
+    }
+    
+    // If it's an external URL, navigate normally
+    if (href.startsWith("http")) {
       window.location.href = href;
       return;
     }
@@ -72,14 +80,24 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-4 lg:space-x-8">
             {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
-              >
-                {item.name}
-              </a>
+              item.href.startsWith("/blog") ? (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => scrollToSection(e, item.href)}
+                  className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
+                >
+                  {item.name}
+                </a>
+              )
             ))}
 
             <a
@@ -119,14 +137,25 @@ export function Navbar() {
       >
         <div className="pt-2 pb-3 space-y-1 bg-[#0d0d12]">
           {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={(e) => scrollToSection(e, item.href)}
-              className="block px-4 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
-            >
-              {item.name}
-            </a>
+            item.href.startsWith("/blog") ? (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block px-4 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => scrollToSection(e, item.href)}
+                className="block px-4 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
+              >
+                {item.name}
+              </a>
+            )
           ))}
 
           <div className="px-4 py-2">
