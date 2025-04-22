@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import type { Config } from 'tailwindcss'
-
+//jjj
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
