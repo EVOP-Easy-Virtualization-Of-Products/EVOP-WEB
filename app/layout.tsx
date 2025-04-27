@@ -105,6 +105,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={plusJakartaSans.variable}>
       <head>
+      <meta name="google-site-verification" content="fSccXVNeVzmAKqN6E6W9RMWEf7qWWuaVV55ZLqjxW9s" />
         {/* Preload critical font */}
         <link
           rel="preload"
