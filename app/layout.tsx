@@ -4,6 +4,19 @@ import { Navbar } from "@/components/navbar/Navbar";
 import type { Metadata } from "next";
 import type { Viewport } from "next";
 
+// Utility function to check if running on localhost
+const isLocalhost = () => {
+  // Server-side: Check NODE_ENV
+  if (typeof window === "undefined") {
+    return process.env.NODE_ENV === "development";
+  }
+  // Client-side: Check hostname
+  return (
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+  );
+};
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -31,12 +44,13 @@ export const metadata: Metadata = {
     "EVOP Tech",
     "Software Company",
     "Startup Solutions",
-    "Cyber Security",
-    "Web Development",
-    "Application Development",
-    "Virtualization Technology",
+    "Cyber Security for Startups",
+    "Web Development Services",
+    "Application Development for Startups",
+    "Virtualization Technology Solutions",
+    "Innovative Software Solutions",
   ],
-  authors: [{ name: "EVOP Tech", url: "https://evoptech.com" }],
+  authors: [{ name: "EVOP Tech", url: "https://evop.tech" }],
   robots: {
     index: true,
     follow: true,
@@ -48,15 +62,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  metadataBase: new URL("https://evoptech.com"),
+  metadataBase: new URL("https://evop.tech"),
   alternates: {
-    canonical: "https://evoptech.com",
+    canonical: "https://evop.tech",
   },
   openGraph: {
     title: "EVOP Tech - Easy Virtualization Of Products Technology",
     description:
       "EVOP Tech builds innovative websites and applications for startups, offering robust cyber security solutions to empower your business.",
-    url: "https://evoptech.com",
+    url: "https://evop.tech",
     siteName: "EVOP Tech",
     type: "website",
     locale: "en_US",
@@ -93,7 +107,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   verification: {
-    google: "your-google-site-verification-code", // Add if available
+    google: "new-verification-code-for-evop-tech", // Replace with actual code from Google Search Console
   },
 };
 
@@ -105,7 +119,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={plusJakartaSans.variable}>
       <head>
-      <meta name="google-site-verification" content="fSccXVNeVzmAKqN6E6W9RMWEf7qWWuaVV55ZLqjxW9s" />
+        <meta
+          name="google-site-verification"
+          content="new-verification-code-for-evop-tech" // Replace with actual code
+        />
         {/* Preload critical font */}
         <link
           rel="preload"
@@ -122,8 +139,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "EVOP Tech",
-              url: "https://evoptech.com",
-              logo: "https://evoptech.com/logo.svg",
+              url: "https://evop.tech",
+              logo: "https://evop.tech/logo.svg",
               description:
                 "EVOP Tech is a software company specializing in website and application development for startups, with a focus on cyber security solutions.",
               sameAs: [
@@ -132,34 +149,36 @@ export default function RootLayout({
               ],
               contactPoint: {
                 "@type": "ContactPoint",
-                email: "contact@evoptech.com",
+                email: "contact@evop.tech", // Update if email changes
                 contactType: "Customer Service",
               },
             }),
           }}
         />
-        {/* Matomo Analytics (deferred loading) */}
-        <script
-          defer
-          dangerouslySetInnerHTML={{
-            __html: `
-              var _paq = window._paq = window._paq || [];
-              _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-              _paq.push(['trackPageView']);
-              _paq.push(['enableLinkTracking']);
-              (function() {
-                var u="https://dis25y.stackhero-network.com/";
-                _paq.push(['setTrackerUrl', u+'matomo.php']);
-                _paq.push(['setSiteId', '1']);
-                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-              })();
-            `,
-          }}
-        />
+        {/* Matomo Analytics (only in production) */}
+        {!isLocalhost() && (
+          <script
+            defer
+            dangerouslySetInnerHTML={{
+              __html: `
+                var _paq = window._paq = window._paq || [];
+                _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                (function() {
+                  var u="https://dis25y.stackhero-network.com/";
+                  _paq.push(['setTrackerUrl', u+'matomo.php']);
+                  _paq.push(['setSiteId', '1']);
+                  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                  g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+                })();
+              `,
+            }}
+          />
+        )}
       </head>
       <body
-        className="font-plus-jakarta text-white min-h-screen bg-black"
+        className="font-plus-jakarta text-white min-h-screen bg-white"
         suppressHydrationWarning
       >
         <Navbar />
