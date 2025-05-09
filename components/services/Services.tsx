@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 const services = [
   {
     image: "/services-logo1.png",
@@ -37,7 +37,7 @@ export function Services() {
       <div className="container">
         <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
           <div className="h-[30px] pl-3 pr-3.5 py-1 bg-white rounded-full shadow-[0px_1px_2px_0px_rgba(13,13,18,0.04)] shadow-[0px_1px_3px_0px_rgba(13,13,18,0.05)] border border-[#dfe1e6] justify-center items-center gap-1.5 inline-flex">
-            <img src="services.png" alt="" />
+            <Image src="/services.png" alt="Service EVOP" width="17" height="16" />
             <p className="text-blue-500">Why EVOP</p>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d0d12]">
@@ -56,7 +56,7 @@ export function Services() {
                 className="bg-white rounded-2xl p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl cursor-pointer"
               >
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
-                  <img src={service.image} alt={service.title} />
+                  <Image src={service.image} alt={service.title} width="52" height="52"/>
                 </div>
                 <h3 className="text-2xl font-bold text-[#0d0d12] mb-4">
                   {service.title}
