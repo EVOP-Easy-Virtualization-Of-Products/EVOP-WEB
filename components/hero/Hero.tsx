@@ -117,7 +117,7 @@ function FeatureCard({
   return (
     <div className="bg-white rounded-xl p-4 flex items-center space-x-4 hover:scale-[1.02] transition-transform">
       <div className="relative w-8 h-8">
-        <Image src={icon} alt={alt} fill className="object-contain" />
+        <Image src={icon} height="80" width="80" alt={alt} className="object-contain" />
       </div>
       <h3 className="text-[#0d0d12] font-semibold flex-1">{title}</h3>
     </div>

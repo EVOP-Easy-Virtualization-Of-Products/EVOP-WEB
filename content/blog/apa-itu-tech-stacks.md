@@ -1,11 +1,9 @@
 ---
 title: "Istilah Gaul programmer: Tech Stack"
 date: "2025-05-4"
-description: "Apa itu Tech Stack"
+description: "Apa itu Tech Stack? Tulang Punggung Dunia Aplikasi Modern"
 image: "/tech-stack.jpg"
 ---
-
-# Apa Itu Tech Stack? Tulang Punggung Dunia Aplikasi Modern
 
 Bayangkan kamu sedang membangun sebuah rumah impian. Kamu butuh fondasi yang kokoh, dinding yang kuat, dan atap yang tahan bocor. Dalam dunia pengembangan aplikasi, "rumah" itu adalah aplikasi atau situs web, dan "bahan bangunan"-nya disebut **tech stack**. Tapi, apa sebenarnya tech stack itu, dan mengapa ini jadi topik yang begitu menarik di era digital?
 

@@ -11,17 +11,6 @@ const Footer = dynamic(() => import('@/components/footer/Footer').then(mod => ({
   loading: () => <div className="h-40" />
 })
 
-const isLocalhost = () => {
-  // Server-side: Check NODE_ENV
-  if (typeof window === "undefined") {
-    return process.env.NODE_ENV === "development";
-  }
-  // Client-side: Check hostname
-  return (
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1"
-  );
-};
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -130,13 +119,7 @@ export default function RootLayout({
           content="new-verification-code-for-evop-tech" // Replace with actual code
         />
         {/* Preload critical font */}
-        <link
-          rel="preload"
-          href="/fonts/plus-jakarta-sans.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+     
         {/* Structured Data (JSON-LD) for Organization */}
         <script
           type="application/ld+json"
@@ -161,27 +144,7 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Matomo Analytics (only in production) */}
-        {!isLocalhost() && (
-          <script
-            defer
-            dangerouslySetInnerHTML={{
-              __html: `
-                var _paq = window._paq = window._paq || [];
-                _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-                _paq.push(['trackPageView']);
-                _paq.push(['enableLinkTracking']);
-                (function() {
-                  var u="https://dis25y.stackhero-network.com/";
-                  _paq.push(['setTrackerUrl', u+'matomo.php']);
-                  _paq.push(['setSiteId', '1']);
-                  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                  g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-                })();
-              `,
-            }}
-          />
-        )}
+      
       </head>
       <body
         className="font-plus-jakarta text-white min-h-screen bg-white"
