@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-import { Footer } from "@/components/footer/Footer";
-import { Navbar } from "@/components/navbar/Navbar";
 export const metadata: Metadata = {
   title: "Cookies | EVOP Tech",
   description: "Understand how EVOP Tech uses cookies to enhance your browsing experience and how you can manage them.",
@@ -20,8 +18,8 @@ export const metadata: Metadata = {
 
 export default function CookiesPage() {
   return (
-    <div className="min-h-screen bg-[#0d0d12] text-white mt-10">
-                <Navbar/>
+    <div className="min-h-screen pt-10 bg-[#0d0d12] text-white ">
+       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-3xl sm:text-4xl font-bold text-[#4AC3F3] mb-8">Cookies Policy</h1>
         <section className="prose prose-invert max-w-none">
@@ -53,7 +51,6 @@ export default function CookiesPage() {
           </p>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -111,14 +111,14 @@ export function Navbar() {
                   {item.name}
                 </Link>
               ) : (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
                   className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
                 >
                   {item.name}
-                </a>
+                </Link>
               )
             ))}
 
@@ -179,14 +179,14 @@ export function Navbar() {
                 {item.name}
               </Link>
             ) : (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 onClick={(e) => scrollToSection(e, item.href)}
                 className="block px-4 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
               >
                 {item.name}
-              </a>
+              </Link>
             )
           ))}
 

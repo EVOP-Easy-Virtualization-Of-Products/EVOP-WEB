@@ -3,8 +3,14 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar/Navbar";
 import type { Metadata } from "next";
 import type { Viewport } from "next";
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 
 // Utility function to check if running on localhost
+const Footer = dynamic(() => import('@/components/footer/Footer').then(mod => ({ default: mod.Footer })), {
+  loading: () => <div className="h-40" />
+})
+
 const isLocalhost = () => {
   // Server-side: Check NODE_ENV
   if (typeof window === "undefined") {
@@ -183,6 +189,10 @@ export default function RootLayout({
       >
         <Navbar />
         <main>{children}</main>
+        <Suspense fallback={<div className="h-40" />}>
+        <Footer />
+      </Suspense>
+   
       </body>
     </html>
   );

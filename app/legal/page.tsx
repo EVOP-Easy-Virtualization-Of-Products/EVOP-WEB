@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { Footer } from "@/components/footer/Footer";
-import { Navbar } from "@/components/navbar/Navbar";
+
 export const metadata: Metadata = {
   title: "Legal | EVOP Tech",
   description: "Review the legal terms and conditions governing the use of EVOP Tech's website and services.",
@@ -20,9 +19,9 @@ export const metadata: Metadata = {
 
 export default function LegalPage() {
   return (
-    <div className="mt-10 min-h-screen bg-[#0d0d12] text-white">
-      <Navbar/>
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div className=" min-h-screen pt-10 bg-[#0d0d12] text-white">
+
+      <main className="container  mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-3xl sm:text-4xl font-bold text-[#4AC3F3] mb-8">Legal</h1>
         <section className="prose prose-invert max-w-none">
           <p className="text-gray-300">Last updated: May 8, 2025</p>
@@ -51,7 +50,7 @@ export default function LegalPage() {
           </p>
         </section>
       </main>
-      <Footer />
+    
     </div>
   );
 }

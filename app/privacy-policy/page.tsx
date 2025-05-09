@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-import { Footer } from "@/components/footer/Footer";
-import { Navbar } from "@/components/navbar/Navbar";
 export const metadata: Metadata = {
   title: "Privacy Policy | EVOP Tech",
   description: "Learn how EVOP Tech collects, uses, and protects your personal information in accordance with our privacy policy.",
@@ -20,8 +18,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-[#0d0d12] text-white mt-10">
-        <Navbar/>
+    <div className="min-h-screen bg-[#0d0d12] text-white pt-10">
+        
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-3xl sm:text-4xl font-bold text-[#4AC3F3] mb-8">Privacy Policy</h1>
         <section className="prose prose-invert max-w-none">
@@ -51,7 +49,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
       </main>
-      <Footer />
+      
     </div>
   );
 }

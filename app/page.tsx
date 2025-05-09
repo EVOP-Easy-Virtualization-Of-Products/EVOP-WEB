@@ -37,9 +37,6 @@ const LatestNews = dynamic(() => import('@/components/latestnews/latest-news'), 
 
 
 
-const Footer = dynamic(() => import('@/components/footer/Footer').then(mod => ({ default: mod.Footer })), {
-  loading: () => <div className="h-40" />
-})
 
 export default function Home() {
   return (
@@ -66,7 +63,13 @@ export default function Home() {
             </AnimationWrapper>
           </Suspense>
         </section>
-        
+
+        {/* <section id="testimonials">
+          <AnimationWrapper>
+            <Testimonials/>
+          </AnimationWrapper>
+        </section>
+         */}
         <section id="blog">
           <AnimationWrapper>
             <LatestNews/>
@@ -88,9 +91,7 @@ export default function Home() {
         </section>
       </main>
 
-      <Suspense fallback={<div className="h-40" />}>
-        <Footer />
-      </Suspense>
+    
     </>
   )
 }

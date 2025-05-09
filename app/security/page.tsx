@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { Footer } from "@/components/footer/Footer";
-import { Navbar } from "@/components/navbar/Navbar";
+
 export const metadata: Metadata = {
   title: "Security | EVOP Tech",
   description: "Discover the robust security measures EVOP Tech implements to protect your data and ensure safe digital experiences.",
@@ -20,8 +19,8 @@ export const metadata: Metadata = {
 
 export default function SecurityPage() {
   return (
-    <div className="mt-10 min-h-screen bg-[#0d0d12] text-white">
-        <Navbar/>
+    <div className="pt-10 min-h-screen bg-[#0d0d12] text-white">
+        
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-3xl sm:text-4xl font-bold text-[#4AC3F3] mb-8">Security</h1>
         <section className="prose prose-invert max-w-none">
@@ -51,7 +50,7 @@ export default function SecurityPage() {
           </p>
         </section>
       </main>
-      <Footer />
+      
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { Footer } from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Mobile Development | EVOP Tech",
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function MobileDevelopmentPage() {
   return (
-    <div className="min-h-screen bg-[#f8fafb] text-[#0d0d12]">
+    <div className="min-h-screen pt-10 bg-[#f8fafb] text-[#0d0d12]">
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-3xl sm:text-4xl font-bold text-[#0d0d12] mb-8">Mobile Development</h1>
         <section className="prose max-w-none">
@@ -47,7 +46,7 @@ export default function MobileDevelopmentPage() {
           </p>
         </section>
       </main>
-      <Footer />
+      
     </div>
   );
 }
