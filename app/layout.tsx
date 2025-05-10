@@ -123,26 +123,7 @@ export default function RootLayout({
         {/* Structured Data (JSON-LD) for Organization */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "EVOP Tech",
-              url: "https://evop.tech",
-              logo: "https://evop.tech/logo.svg",
-              description:
-                "EVOP Tech is a software company specializing in website and application development for startups, with a focus on cyber security solutions.",
-              sameAs: [
-                "https://twitter.com/evoptech",
-                // Add other social profiles
-              ],
-              contactPoint: {
-                "@type": "ContactPoint",
-                email: "contact@evop.tech", // Update if email changes
-                contactType: "Customer Service",
-              },
-            }),
-          }}
+      
         />
       
       </head>

@@ -27,12 +27,14 @@ async function BlogPostContent({ id }: { id: string }) {
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`https://evoptech.com/blog/${post.id}`} />
+        <link rel="canonical" href={`https://evop.tech/blog/${post.id}`} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
         <meta property="og:image" content={post.image} />
-        <meta property="og:url" content={`https://evoptech.com/blog/${post.id}`} />
+        <meta property="og:url" content={`https://evop.tech/blog/${post.id}`} />
         <meta property="og:type" content="article" />
+        <meta property="article:published_time" content={new Date(post.date).toISOString()} />
+        <meta property="article:modified_time" content={post.date ? new Date(post.date).toISOString() : new Date(post.date).toISOString()} />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -46,7 +48,7 @@ async function BlogPostContent({ id }: { id: string }) {
             publisher: {
               '@type': 'Organization',
               name: 'EVOP',
-              logo: { '@type': 'ImageObject', url: 'https://evoptech.com/logo.svg' },
+              logo: { '@type': 'ImageObject', url: 'https://evop.tech/logo.svg' },
             },
           })}
         </script>
