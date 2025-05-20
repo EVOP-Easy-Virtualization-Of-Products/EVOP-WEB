@@ -1,7 +1,7 @@
-import { NextResponse } from 'next/server'
 import fs from 'fs'
-import path from 'path'
 import matter from 'gray-matter'
+import { NextResponse } from 'next/server'
+import path from 'path'
 
 const postsDirectory = path.join(process.cwd(), 'content/blog')
 
@@ -19,7 +19,8 @@ export async function GET() {
         title: data.title,
         date: data.date,
         description: data.description,
-        image: data.image || '/blog-placeholder.jpg'
+        image: data.image || '/blog-placeholder.jpg',
+        keyword: data.keyword || ''
       }
     })
 
@@ -27,6 +28,7 @@ export async function GET() {
     const sortedPosts = allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))
     
     return NextResponse.json(sortedPosts)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (_error) {
     return NextResponse.json(
       { error: 'Failed to fetch blog posts' },

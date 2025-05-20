@@ -3,6 +3,7 @@ title: "Istilah Gaul Programmer: API, Jembatan Digital Dunia Modern"
 date: "2025-05-10"
 description: "Apa itu API? Mengapa ini jadi kunci di balik aplikasi modern yang kita gunakan setiap hari?"
 image: "https://stackct.com/wp-content/uploads/2022/06/BLOG_API-Large-1024x492.png.webp"
+keyword: "api, API, Application Programming Interface, Website, Bridge, Jembatan"
 ---
 
 Bayangkan kamu sedang memesan makanan lewat aplikasi favoritmu. Kamu pilih menu, bayar, dan voila, makanan sampai di depan pintu. Tapi, pernahkah kamu bertanya bagaimana aplikasi itu bisa "berbicara" dengan restoran, bank, dan kurir secara bersamaan? Jawabannya adalah **API**, singkatan dari *Application Programming Interface*. Dalam dunia pemrograman, API adalah jembatan digital yang membuat aplikasi saling terhubung, seperti kurir yang mengantarkan pesan antar sistem.
