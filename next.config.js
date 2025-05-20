@@ -4,7 +4,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['images.unsplash.com','stackct.com', 'komarev.com', 'img.shields.io','blogger.googleusercontent.com','shalb.com'],
+    domains: ['pengadaan.penerbitdeepublish.com','images.unsplash.com','stackct.com', 'komarev.com', 'img.shields.io','blogger.googleusercontent.com','shalb.com'],
   },
 }
 
