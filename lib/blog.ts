@@ -1,10 +1,21 @@
+// lib/blog.ts
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
-export async function getPostById(id: string) {
+export interface BlogPost {
+  id: string;
+  title: string;
+  description: string;
+  keyword?: string;
+  image?: string; // Optional, as defined
+  date: string;
+  content: string;
+}
+
+export async function getPostById(id: string): Promise<BlogPost | null> {
   try {
     const fullPath = path.join(postsDirectory, `${id}.md`);
     if (!fs.existsSync(fullPath)) {
@@ -24,19 +35,19 @@ export async function getPostById(id: string) {
       content,
     };
   } catch (error) {
-    console.log(`getPostById: Error fetching post for id: ${id}`, error);
+    console.error(`getPostById: Error fetching post for id: ${id}`, error);
     return null;
   }
 }
 
-export async function getAllPosts() {
+export async function getAllPosts(): Promise<BlogPost[]> {
   try {
     const fileNames = fs.readdirSync(postsDirectory);
     const allPostsData = fileNames.map((fileName) => {
       const id = fileName.replace(/\.md$/, '');
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data } = matter(fileContents);
+      const { data, content } = matter(fileContents); // Extract content
 
       return {
         id,
@@ -45,12 +56,13 @@ export async function getAllPosts() {
         keyword: data.keyword || '',
         image: data.image || '/blog-placeholder.jpg',
         date: data.date || new Date().toISOString(),
+        content, // Include content
       };
     });
 
     return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
   } catch (error) {
-    console.log('getAllPosts: Error fetching posts', error);
+    console.error('getAllPosts: Error fetching posts', error);
     return [];
   }
 }

@@ -1,75 +1,54 @@
+// app/blog/[id]/page.tsx
 import { getAllPosts, getPostById } from "@/lib/blog"
 import MarkdownIt from "markdown-it"
-import type { Metadata, ResolvingMetadata } from "next"
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import RecommendedPostsSlider from "./recommended-posts-slider"
 
-// Metadata generation for this specific route
 type Props = {
-  params: Promise<{ id: string }>
-  searchParams: { [key: string]: string | string[] | undefined }
+  params: { id: string }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
-  // Await the params before accessing id
-  const { id } = await params
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPostById(params.id)
 
-  try {
-    const post = await getPostById(id)
-
-    if (!post) {
-      return {
-        title: "Post Not Found",
-        description: "The requested blog post could not be found.",
-      }
-    }
-
-    // Use the post title and description directly as metadata
+  if (!post) {
     return {
-      title: `${post.title} `,
+      title: "Post Not Found",
+      description: "The requested blog post could not be found.",
+    }
+  }
+
+  return {
+    title: `${post.title} | EVOP TECH`,
+    description: post.description,
+    keywords: post.keyword?.split(", ") ?? ["blog", "article"],
+    openGraph: {
+      title: `${post.title} - EVOP TECH`,
       description: post.description,
-      keywords: post.keyword ? post.keyword.split(", ") : ["blog", "article"],
-      openGraph: {
-        title: `${post.title} - EVOP TECH`,
-        description: `${post.description} - EVOP TECH`,
-        type: "article",
-        images: [
-          {
-            url: post.image || "/og-image.jpg",
-            width: 1200,
-            height: 630,
-            alt: post.title,
-          },
-        ],
-        publishedTime: new Date(post.date).toISOString(),
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: post.title,
-        description: post.description,
-        images: [post.image || "/og-image.jpg"],
-      },
-    }
-  } catch (error) {
-    console.error("Error fetching post metadata:", error)
-    return {
-      title: "Error",
-      description: "An error occurred while fetching the blog post.",
-    }
+      type: "article",
+      images: [
+        {
+          url: post.image ?? "/blog-placeholder.jpg",
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
   }
 }
 
-// Use a separate function for the main component logic
-async function BlogPostContent({ id }: { id: string }) {
-  const post = await getPostById(id)
-  const allPosts = await getAllPosts()
+export default async function BlogPostPage({ params }: Props) {
+  const post = await getPostById(params.id)
 
   if (!post) {
     notFound()
   }
+
+  const allPosts = await getAllPosts()
 
   const md = new MarkdownIt({
     html: true,
@@ -79,10 +58,9 @@ async function BlogPostContent({ id }: { id: string }) {
 
   const contentHtml = md.render(post.content)
 
-  // Filter out the current post and get up to 6 recent posts for the slider
   const recommendedPosts = allPosts
-    .filter((p) => p.id !== id)
-    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .filter((p) => p.id !== params.id)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 6)
 
   return (
@@ -99,7 +77,7 @@ async function BlogPostContent({ id }: { id: string }) {
 
           <div className="relative h-[200px] sm:h-[300px] md:h-[400px] w-full mb-6 sm:mb-8 rounded-xl sm:rounded-2xl overflow-hidden">
             <Image
-              src={post.image || "/placeholder.svg"}
+              src={post.image ?? "/blog-placeholder.jpg"}
               alt={post.title}
               fill
               className="object-cover"
@@ -134,7 +112,7 @@ async function BlogPostContent({ id }: { id: string }) {
             prose-h2:text-xl sm:prose-h2:text-2xl md:prose-h2:text-3xl
             prose-h2:text-center prose-h2:mb-6
             prose-h3:text-left text-lg sm:prose-h3:text-xl md:prose-h3:text-2xl
-             prose-h3:mb-4
+            prose-h3:mb-4
             prose-h4:text-left prose-h4:text-md
             prose-p:text-gray-600 
             prose-p:text-sm sm:prose-p:text-base md:prose-p:text-lg
@@ -148,11 +126,7 @@ async function BlogPostContent({ id }: { id: string }) {
             p-4 sm:p-8 md:p-12 
             max-w-4xl mb-8 sm:mb-12"
         >
-          <div
-            dangerouslySetInnerHTML={{
-              __html: contentHtml,
-            }}
-          />
+          <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </article>
 
         {/* Recommendations with Slider */}
@@ -177,16 +151,6 @@ async function BlogPostContent({ id }: { id: string }) {
       </div>
     </div>
   )
-}
-
-type PageProps = {
-  params: Promise<{ id: string }>
-}
-
-export default async function BlogPostPage({ params }: PageProps) {
-  // Await the params before accessing id
-  const { id } = await params
-  return <BlogPostContent id={id} />
 }
 
 export async function generateStaticParams() {

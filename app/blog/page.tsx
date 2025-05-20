@@ -1,8 +1,9 @@
-import Image from "next/image";
-import { getAllPosts } from "@/lib/blog";
+// app/blog/page.tsx
 import { AnimationWrapper } from "@/components/animation-wrapper";
-import type { Metadata } from "next";
 import BlogFilter from "@/components/blog/BlogFilter";
+import { BlogPost, getAllPosts } from "@/lib/blog"; // Import BlogPost type
+import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "EVOP Blog - Latest Articles and Insights",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await getAllPosts();
+  const posts: BlogPost[] = await getAllPosts();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 pt-24">
@@ -38,8 +39,7 @@ export default async function BlogPage() {
               Latest from Our Blog
             </h1>
             <p className="text-gray-600 text-lg">
-              Here are all our essential tips for getting your business project
-              off the ground.
+              Here are all our essential tips for getting your business project off the ground.
             </p>
           </div>
         </AnimationWrapper>

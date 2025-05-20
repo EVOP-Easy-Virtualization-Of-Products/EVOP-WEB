@@ -2,7 +2,7 @@
 title: "Istilah Gaul Programmer: DevOps, Jembatan Kolaborasi Tim Teknologi"
 date: "2025-05-11"
 description: "Apa itu DevOps? Mengapa pendekatan ini jadi kunci sukses pengembangan aplikasi modern?"
-image: "https://shalb.com/wp-content/uploads/2019/11/Devops1.jpeg"
+image: "https://dicoding-assets.sgp1.cdn.digitaloceanspaces.com/blog/wp-content/uploads/2020/06/tools-devops.png"
 keyword: "DevOps, Developer Operations, Technology, Programming, Programmer"
 ---
 

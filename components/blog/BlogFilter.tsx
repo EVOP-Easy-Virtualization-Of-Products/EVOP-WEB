@@ -1,10 +1,11 @@
+// components/blog/BlogFilter.tsx
 'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimationWrapper } from '../animation-wrapper';
-import type { BlogPost } from '@/lib/blog';
+import { BlogPost } from '@/lib/blog';
 
 type FilterOption = 'latest' | 'oldest';
 
@@ -18,8 +19,6 @@ export default function BlogFilter({ initialPosts }: BlogFilterProps) {
 
   const handleFilterChange = (filter: FilterOption) => {
     setActiveFilter(filter);
-    
-    // Sort the posts based on the selected filter
     const sortedPosts = [...initialPosts].sort((a, b) => {
       if (filter === 'latest') {
         return new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -27,13 +26,11 @@ export default function BlogFilter({ initialPosts }: BlogFilterProps) {
         return new Date(a.date).getTime() - new Date(b.date).getTime();
       }
     });
-    
     setPosts(sortedPosts);
   };
 
   return (
     <div className="w-full">
-      {/* Filter buttons */}
       <div className="flex justify-center gap-4 mb-10">
         <button
           onClick={() => handleFilterChange('latest')}
@@ -57,7 +54,6 @@ export default function BlogFilter({ initialPosts }: BlogFilterProps) {
         </button>
       </div>
 
-      {/* Blog posts grid */}
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
         {posts.map((post) => (
           <AnimationWrapper key={post.id}>
@@ -70,7 +66,7 @@ export default function BlogFilter({ initialPosts }: BlogFilterProps) {
               >
                 <div className="relative h-48 w-full">
                   <Image
-                    src={post.image || "/placeholder.svg"}
+                    src={post.image ?? '/blog-placeholder.jpg'}
                     alt={`Featured image for article: ${post.title}`}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-300"
@@ -96,10 +92,7 @@ export default function BlogFilter({ initialPosts }: BlogFilterProps) {
                   {post.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <time
-                    className="text-sm text-gray-600"
-                    dateTime={post.date}
-                  >
+                  <time className="text-sm text-gray-600" dateTime={post.date}>
                     {post.date}
                   </time>
                   <Link
@@ -118,4 +111,4 @@ export default function BlogFilter({ initialPosts }: BlogFilterProps) {
       </div>
     </div>
   );
-} 
+}

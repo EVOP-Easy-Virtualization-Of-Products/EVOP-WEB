@@ -10,18 +10,10 @@ import "swiper/css/pagination"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 // Import required modules
+import type { BlogPost } from "@/lib/blog"; // Import BlogPost type directly
 import { A11y, Navigation, Pagination } from "swiper/modules"
 
-// Define the Post type
-type Post = {
-  id: string
-  title: string
-  description: string
-  image: string
-  date: string
-}
-
-export default function RecommendedPostsSlider({ posts }: { posts: Post[] }) {
+export default function RecommendedPostsSlider({ posts }: { posts: BlogPost[] }) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
