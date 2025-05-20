@@ -1,12 +1,11 @@
 import { Navbar } from "@/components/navbar/Navbar";
-import { getPostById } from "@/lib/blog"; // Import the function to fetch post data
+import { getPostById } from "@/lib/blog";
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
 
-// Utility function to check if running on localhost
 const Footer = dynamic(
   () => import("@/components/footer/Footer").then((mod) => ({ default: mod.Footer })),
   {
@@ -30,7 +29,6 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-// Default metadata (used for non-blog pages or as a fallback)
 const defaultMetadata: Metadata = {
   title: {
     default: "EVOP Tech - Easy Virtualization Of Products Technology",
@@ -109,20 +107,16 @@ const defaultMetadata: Metadata = {
   },
 };
 
-// Dynamic metadata generation
 export async function generateMetadata({ params }: { params: Promise<{ id?: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const id = resolvedParams.id;
 
-  // If no ID is provided (not a blog post page), return default metadata
   if (!id) {
     return defaultMetadata;
   }
 
-  // Fetch the blog post data
   const post = await getPostById(id);
 
-  // If no post is found, return fallback metadata
   if (!post) {
     return {
       ...defaultMetadata,
@@ -131,13 +125,12 @@ export async function generateMetadata({ params }: { params: Promise<{ id?: stri
     };
   }
 
-  // Return metadata customized for the blog post
   return {
     ...defaultMetadata,
-    title: post.title, // Use post title directly for <title> tag
-    description: post.description || defaultMetadata.description, // Fallback to default description if post.description is missing
+    title: post.title,
+    description: post.description || defaultMetadata.description,
     alternates: {
-      canonical: `https://evop.tech/blog/${id}`,
+      canonical: `https://evop.tech/blog/${id}`, // Canonical URL for blog post
     },
     openGraph: {
       ...defaultMetadata.openGraph,

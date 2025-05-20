@@ -1,32 +1,35 @@
-// app/blog/[id]/page.tsx
-import { getAllPosts, getPostById } from "@/lib/blog"
-import MarkdownIt from "markdown-it"
-import type { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import RecommendedPostsSlider from "./recommended-posts-slider"
+import { getAllPosts, getPostById } from "@/lib/blog";
+import MarkdownIt from "markdown-it";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import RecommendedPostsSlider from "./recommended-posts-slider";
 
 type Props = {
-  params: { id: string }
-}
+  params: Promise<{ id: string }>; // Ensure params is typed as a Promise
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPostById(params.id)
+  const { id } = await params; // Await params to resolve the id
+  const post = await getPostById(id);
 
   if (!post) {
     return {
       title: "Post Not Found",
       description: "The requested blog post could not be found.",
-    }
+    };
   }
 
   return {
-    title: `${post.title} | EVOP TECH`,
+    title: `${post.title} | EVOP Tech`,
     description: post.description,
     keywords: post.keyword?.split(", ") ?? ["blog", "article"],
+    alternates: {
+      canonical: `https://evop.tech/blog/${id}`, // Set canonical URL here
+    },
     openGraph: {
-      title: `${post.title} - EVOP TECH`,
+      title: `${post.title} - EVOP Tech`,
       description: post.description,
       type: "article",
       images: [
@@ -38,35 +41,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       ],
     },
-  }
+  };
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = await getPostById(params.id)
+  const { id } = await params; // Await params in the page component as well
+  const post = await getPostById(id);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
-  const allPosts = await getAllPosts()
+  const allPosts = await getAllPosts();
 
   const md = new MarkdownIt({
     html: true,
     linkify: true,
     typographer: true,
-  })
+  });
 
-  const contentHtml = md.render(post.content)
+  const contentHtml = md.render(post.content);
 
   const recommendedPosts = allPosts
-    .filter((p) => p.id !== params.id)
+    .filter((p) => p.id !== id)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 6)
+    .slice(0, 6);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 pt-16 sm:pt-20 md:pt-24">
       <div className="container mx-auto px-4 sm:px-6 mt-5">
-        {/* Header */}
         <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
           <Link href="/blog" className="inline-flex items-center text-[#287eff] hover:text-[#1855F1] mb-4 sm:mb-8">
             <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +106,6 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </div>
 
-        {/* Content */}
         <article
           className="prose prose-base sm:prose-lg lg:prose-xl 
             prose-headings:text-[#0d0d12] 
@@ -129,7 +131,6 @@ export default async function BlogPostPage({ params }: Props) {
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </article>
 
-        {/* Recommendations with Slider */}
         {recommendedPosts.length > 0 && (
           <section className="max-w-6xl mx-auto mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0d0d12] text-center mb-6 sm:mb-8">
@@ -139,7 +140,6 @@ export default async function BlogPostPage({ params }: Props) {
           </section>
         )}
 
-        {/* Footer */}
         <div className="max-w-4xl mx-auto pb-8 sm:pb-12 text-center">
           <Link
             href="/blog"
@@ -150,12 +150,12 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts()
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     id: post.id,
-  }))
+  }));
 }
