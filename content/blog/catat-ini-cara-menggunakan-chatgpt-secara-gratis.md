@@ -1,5 +1,5 @@
 ---
-title: "Catat! Ini Cara Menggunakan ChatGPT secara Gratis"
+title: "Catat! Cara Menggunakan ChatGPT secara Gratis"
 date: "2025-05-19"
 description: "Bagaimana Cara Menggunakan ChatGPT Secara Gratis? Catat lewat Artikel Ini"
 image: "/image-3.jpg"

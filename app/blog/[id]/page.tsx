@@ -7,11 +7,11 @@ import { notFound } from "next/navigation";
 import RecommendedPostsSlider from "./recommended-posts-slider";
 
 type Props = {
-  params: Promise<{ id: string }>; // Ensure params is typed as a Promise
+  params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params; // Await params to resolve the id
+  const { id } = await params;
   const post = await getPostById(id);
 
   if (!post) {
@@ -21,17 +21,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  let publishedTime: string;
+  let modifiedTime: string;
+  try {
+    publishedTime = new Date(post.date).toISOString();
+    modifiedTime = post.modified ? new Date(post.modified).toISOString() : publishedTime;
+  } catch (error) {
+    console.error("Invalid date format:", { date: post.date, modified: post.modified });
+    return {
+      title: "Error | EVOP TECH",
+      description: "Invalid date format for the blog post.",
+    };
+  }
+
   return {
-    title: `${post.title} | EVOP Tech`,
+    title: `${post.title}`,
     description: post.description,
     keywords: post.keyword?.split(", ") ?? ["blog", "article"],
     alternates: {
-      canonical: `https://evop.tech/blog/${id}`, // Set canonical URL here
+      canonical: `https://evop.tech/blog/${id}`,
     },
     openGraph: {
-      title: `${post.title} - EVOP Tech`,
+      title: `${post.title}`,
+      url: `https://evop.tech/blog/${id}`,
       description: post.description,
       type: "article",
+      publishedTime: publishedTime,
+      modifiedTime: modifiedTime,
       images: [
         {
           url: post.image ?? "/blog-placeholder.jpg",
@@ -41,11 +57,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       ],
     },
+    other: {
+      "article:published_time": publishedTime,
+      "article:modified_time": modifiedTime,
+      "dcterms.created": publishedTime,
+      "dcterms.modified": modifiedTime,
+    },
   };
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const { id } = await params; // Await params in the page component as well
+  const { id } = await params;
   const post = await getPostById(id);
 
   if (!post) {
@@ -67,8 +89,37 @@ export default async function BlogPostPage({ params }: Props) {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 6);
 
+  const publishedTime = new Date(post.date).toISOString();
+  const modifiedTime = post.modified ? new Date(post.modified).toISOString() : publishedTime;
+
+  // JSON-LD for Article schema
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    image: post.image ?? "/blog-placeholder.jpg",
+    datePublished: publishedTime,
+    dateModified: modifiedTime,
+    author: {
+      "@type": "Organization",
+      name: "EVOP TECH",
+      url: "https://evop.tech",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "EVOP TECH",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://evop.tech/logo.png", // Replace with your actual logo URL
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 pt-16 sm:pt-20 md:pt-24">
+      {/* Move JSON-LD to the body */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="container mx-auto px-4 sm:px-6 mt-5">
         <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
           <Link href="/blog" className="inline-flex items-center text-[#287eff] hover:text-[#1855F1] mb-4 sm:mb-8">
@@ -96,13 +147,26 @@ export default async function BlogPostPage({ params }: Props) {
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#0d0d12] leading-tight">
               {post.title}
             </h1>
-            <time className="block text-sm sm:text-base text-gray-600">
-              {new Date(post.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
+            <div className="text-sm sm:text-base text-gray-600">
+              <time dateTime={publishedTime}>
+                Published: {new Date(post.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+              {post.modified && (
+                <div>
+                  <time dateTime={modifiedTime}>
+                    Updated: {new Date(post.modified).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

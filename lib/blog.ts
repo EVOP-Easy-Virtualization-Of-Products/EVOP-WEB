@@ -6,6 +6,7 @@ import path from 'path';
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
 export interface BlogPost {
+  modified: any;
   id: string;
   title: string;
   description: string;

@@ -31,13 +31,13 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 const defaultMetadata: Metadata = {
   title: {
-    default: "EVOP Tech - Easy Virtualization Of Products Technology",
-    template: "%s | EVOP Tech",
+    default: "EVOP TECH - Easy Virtualization Of Products Technology",
+    template: "%s | EVOP TECH",
   },
   description:
-    "EVOP Tech builds innovative websites and applications for startups, offering robust cyber security solutions to empower your business.",
+    "EVOP TECH builds innovative websites and applications for startups, offering robust cyber security solutions to empower your business.",
   keywords: [
-    "EVOP Tech",
+    "EVOP TECH",
     "Software Company",
     "Startup Solutions",
     "Cyber Security for Startups",
@@ -46,7 +46,7 @@ const defaultMetadata: Metadata = {
     "Virtualization Technology Solutions",
     "Innovative Software Solutions",
   ],
-  authors: [{ name: "EVOP Tech", url: "https://evop.tech" }],
+  authors: [{ name: "EVOP TECH", url: "https://evop.tech" }],
   robots: {
     index: true,
     follow: true,
@@ -63,11 +63,11 @@ const defaultMetadata: Metadata = {
     canonical: "https://evop.tech",
   },
   openGraph: {
-    title: "EVOP Tech - Easy Virtualization Of Products Technology",
+    title: "EVOP TECH - Easy Virtualization Of Products Technology",
     description:
-      "EVOP Tech builds innovative websites and applications for startups, offering robust cyber security solutions to empower your business.",
+      "EVOP TECH builds innovative websites and applications for startups, offering robust cyber security solutions to empower your business.",
     url: "https://evop.tech",
-    siteName: "EVOP Tech",
+    siteName: "EVOP TECH",
     type: "website",
     locale: "en_US",
     images: [
@@ -75,22 +75,22 @@ const defaultMetadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "EVOP Tech - Software and Cyber Security Solutions",
+        alt: "EVOP TECH - Software and Cyber Security Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EVOP Tech - Easy Virtualization Of Products Technology",
+    title: "EVOP TECH - Easy Virtualization Of Products Technology",
     description:
-      "EVOP Tech builds innovative websites and applications for startups, offering robust cyber security solutions to empower your business.",
+      "EVOP TECH builds innovative websites and applications for startups, offering robust cyber security solutions to empower your business.",
     creator: "@evoptech",
     site: "@evoptech",
     images: ["/og-image.jpg"],
   },
-  applicationName: "EVOP Tech",
+  applicationName: "EVOP TECH",
   appleWebApp: {
-    title: "EVOP Tech",
+    title: "EVOP TECH",
     capable: true,
     statusBarStyle: "black-translucent",
   },
@@ -116,12 +116,25 @@ export async function generateMetadata({ params }: { params: Promise<{ id?: stri
   }
 
   const post = await getPostById(id);
-
   if (!post) {
     return {
       ...defaultMetadata,
-      title: "Post Not Found | EVOP Tech",
+      title: "Post Not Found | EVOP TECH",
       description: "The requested blog post could not be found.",
+    };
+  }
+
+  let publishedTime: string;
+  let modifiedTime: string;
+  try {
+    publishedTime = new Date(post.date).toISOString();
+    modifiedTime = post.modified ? new Date(post.modified).toISOString() : publishedTime;
+  } catch (error) {
+    console.error("Invalid date format in layout:", { date: post.date, modified: post.modified });
+    return {
+      ...defaultMetadata,
+      title: "Error | EVOP TECH",
+      description: "Invalid date format for the blog post.",
     };
   }
 
@@ -130,7 +143,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id?: stri
     title: post.title,
     description: post.description || defaultMetadata.description,
     alternates: {
-      canonical: `https://evop.tech/blog/${id}`, // Canonical URL for blog post
+      canonical: `https://evop.tech/blog/${id}`,
     },
     openGraph: {
       ...defaultMetadata.openGraph,
@@ -138,6 +151,8 @@ export async function generateMetadata({ params }: { params: Promise<{ id?: stri
       description: post.description || defaultMetadata.description,
       url: `https://evop.tech/blog/${id}`,
       type: "article",
+      publishedTime: publishedTime,
+      modifiedTime: modifiedTime,
       images: [
         {
           url: post.image || "/og-image.jpg",
@@ -153,6 +168,12 @@ export async function generateMetadata({ params }: { params: Promise<{ id?: stri
       description: post.description || defaultMetadata.description,
       images: [post.image || "/og-image.jpg"],
     },
+    other: {
+      "article:published_time": publishedTime,
+      "article:modified_time": modifiedTime,
+      "dcterms.created": publishedTime,
+      "dcterms.modified": modifiedTime,
+    },
   };
 }
 
@@ -160,15 +181,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={plusJakartaSans.variable}>
       <head>
-        <meta
-          name="google-site-verification"
-          content="new-verification-code-for-evop-tech"
-        />
+        <meta name="google-site-verification" content="new-verification-code-for-evop-tech" />
       </head>
-      <body
-        className="font-plus-jakarta text-white min-h-screen bg-white"
-        suppressHydrationWarning
-      >
+      <body className="font-plus-jakarta text-white min-h-screen bg-white" suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
         <Suspense fallback={<div className="h-40" />}>
