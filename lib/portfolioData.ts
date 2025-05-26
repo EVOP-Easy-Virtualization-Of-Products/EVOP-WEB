@@ -3,7 +3,7 @@ export const portfolioItems = [
       slug: "peluncuran-website-go-orbit",
       image: "/go-orbit.png",
       category: "Pengembangan Web & Keamanan Siber",
-      title: "Pelatihan Keamanan Siber & Pengembangan Web untuk Go-Orbit.",
+      title: " Pengembangan Web untuk Go-Orbit.",
       date: "3 Mei, 2025",
       author: "EVOP",
       description:
