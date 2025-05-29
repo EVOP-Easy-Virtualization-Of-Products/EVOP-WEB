@@ -7,12 +7,12 @@ interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  { name: "Helmi Said", role: "Fullstack Developer at EVOP Co-founder", image: "/team/Helmi.png" },
-  { name: "Arya Maulana", role: "Founder, Fullstack Developer, Cyber Security", image: "/team/Arya.jpg" },
+  { name: "Helmi Said", role: "Fullstack Developer, Co-founder at EVOP", image: "/team/Helmi.png" },
+  { name: "Arya Maulana", role: "Founder, Fullstack Developer, Cyber Security at EVOP", image: "/team/Arya.jpg" },
   { name: "Artha Gandhi", role: "Fullstack Developer at EVOP", image: "/team/Artha.png" },
-  { name: "Aditya Pratama", role: "Fullstack Developer at EVOP, Co-founder", image: "/team/Adit.png" },
+  { name: "Aditya Pratama", role: "Fullstack Developer, Co-founder at EVOP", image: "/team/Adit.png" },
   { name: "Nouval Aryanta", role: "Cyber Security at EVOP", image: "/team/Nouval.png" },
-  { name: "Ahmad Lazim", role: "Fullstack Developer", image: "/team/Lazim.jpg" },
+  { name: "Ahmad Lazim", role: "Fullstack Developer at EVOP ", image: "/team/Lazim.jpg" },
   { name: "Abdul Alim", role: "Fullstack Developer at EVOP", image: "/team/Aliem.png" },
   { name: "George Misael", role: "Marketing Specialist at EVOP", image: "/team/George.png" },
 ]
