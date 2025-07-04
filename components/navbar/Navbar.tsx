@@ -88,7 +88,8 @@ export function Navbar() {
             <Link href="/#hero" className="flex items-center">
               <Image
                 src="/logo.svg"
-                alt="EVOP"
+                alt="EVOP TECH"
+                title="EVOP TECH"
                 width={120}
                 height={40}
                 className="h-6 w-auto"
