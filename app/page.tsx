@@ -35,7 +35,7 @@ export default function Home() {
           </Suspense>
         </section>
 
-        <section id="why-us">
+        <section id="portfolio">
           <Suspense >
             <AnimationWrapper>
               <Portfolio />
