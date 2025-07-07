@@ -10,9 +10,9 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Twitter", icon: Twitter, href: "#" },
-  { name: "YouTube", icon: Youtube, href: "#" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/evoptech/" },
+  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/evop.tech" },
+  
 ];
 
 export function Footer() {
