@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Linkedin, Youtube, Twitter } from "lucide-react";
+import { Linkedin, Instagram, Twitter } from "lucide-react";
 
 const footerLinks = [
   { name: "Privacy Policy", href: "/privacy-policy" },
