@@ -4,6 +4,8 @@ date: "2025-07-07"
 description: "Augmented Reality untuk Mendekolonisasi Museum: Revolusi Baru dalam Pengalaman Budaya"
 image: "/augmented.jpg"
 keyword: "Augmented Reality, Museum, Dekolonisasi, Teknologi Museum, Warisan Budaya, Sejarah Digital, Inovasi Budaya, Pengalaman Interaktif, Narasi Alternatif, Museologi"
+author: "Amanina Rasyid Wiyani"
+author_image: "/author/rasyid.jpeg"
 ---
 
 

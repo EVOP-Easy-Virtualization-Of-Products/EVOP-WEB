@@ -4,6 +4,8 @@ date: "2025-06-16"
 description: "Mengenal Digital Twin, teknologi revolusioner yang memprediksi masa depan dengan replika virtual akurat."
 image: "/digital-twin.jpg"
 keyword: "Digital Twin, IoT, Industri 4.0, Smart City, Predictive Maintenance, Teknologi"
+author: "Amanina Rasyid Wiyani"
+author_image: "/author/rasyid.jpeg"
 ---
 
 

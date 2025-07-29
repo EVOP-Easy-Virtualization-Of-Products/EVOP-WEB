@@ -4,6 +4,8 @@ date: "2025-05-19"
 description: "Bagaimana Cara Menggunakan ChatGPT Secara Gratis? Catat lewat Artikel Ini"
 image: "/image-3.jpg"
 keyword: "Chatgpt, AI, Artificial Intellegence, Free AI, Grok, V0.dev"
+author: "Amanina Rasyid Wiyani"
+author_image: "/author/rasyid.jpeg"
 ---
 
 <img src="/chatgpt-gambar.jpg">

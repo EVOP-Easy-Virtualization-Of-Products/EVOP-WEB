@@ -4,6 +4,8 @@ date: "2025-07-10"
 description: "Temukan humans.maxcomperatore.com, sebuah website unik yang menyajikan visualisasi data real-time tentang aktivitas miliaran manusia di seluruh dunia setiap detiknya."
 image: "/image1.png"
 keyword: "Website Unik, Visualisasi Data, Data Real-time, Statistik Dunia, humans.maxcomperatore.com, WTHAPD, Populasi Dunia, Aktivitas Manusia, Website Keren, Website Edukatif, UI/UX, Developer"
+author: "Amanina Rasyid Wiyani"
+author_image: "/author/rasyid.jpeg"
 ---
 
 Hai sobat Evop, ada website keren yang bisa memantau kelahiran tiap detik di dunia. Website ini bisa kamu kamu gunakan untuk proses data yang kamu butuhkan di pekerjaan, tugas kampus, maupun tugas kuliah. Website dengan nuansa minimalis futuristik ini memberikan penjelasan real time mengenai kondisi manusia tiap detiknya. Menariknya lagi website ini memungkinkan pengunjungnya untuk membaca data dengan cara yang simpel tapi tetap informatif. Tampilan UI dan UX yang menekankan keefisiensi, cukup intuitif, dan visual-friendly.Penyajian yang cocok untuk menyajikan data statistik real-time serta kuantitatif. Tampilan dari laman ini juga memberi pengalaman pengguna yang cepat, nyaman, dan tidak membingungkan, sekaligus mempertahankan estetika modern dan profesional.

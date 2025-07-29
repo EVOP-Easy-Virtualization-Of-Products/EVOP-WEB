@@ -4,6 +4,8 @@ date: "2025-06-02"
 description: "Inovasi Terbaru yang Bisa Selamatkan Bumi dan Masa Depan Kita"
 image: "/teknologi-berkelanjutan.jpg"
 keyword: "Cyber Security, Hacking, Website Security, DevOps, Cloud Security, Secure,inovasi,sustainability"
+author: "Amanina Rasyid Wiyani"
+author_image: "/author/rasyid.jpeg"
 ---
 
 Bumi sedang mengalami tekanan perubahan iklim yang cukup ekstrem dan dampak dari krisis lingkungan yang cukup nyata dan terasa dalam keseharian. Masalah ini kerap kali dikaitkan dengan keberadaan teknologi, sementara di sisi lain juga para peneliti berupaya untuk mengembangkan teknologi berkelanjutan yang hadir sebagai solusi futuristik atas potensi rusaknya bumi di beberapa waktu ke depan. Sebelum itu, apakah sobat Evop telah memahami apakah yang dimaskudkan dengan teknologi berkelanjutan tersebutt? Dan bentuk inovasi seperti apa yang memiliki dampak untuk menjaga kelangsungan hidup planet ini? Yuk kita cermati bersama melalui artikel di bawah ini.

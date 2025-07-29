@@ -4,6 +4,8 @@ date: "2025-07-01"
 description: "Apa Saja Tren Teknologi Otomasi yang Mengubah Dunia Kerja?"
 image: "/Hyperautomation.jpeg"
 keyword: " Robotik, Digital Bussiness, Bisnis Digital, Bisnis Website,tech,teknologi"
+author: "Amanina Rasyid Wiyani"
+author_image: "/author/rasyid.jpeg"
 ---
 
 ## Hai sobat Evop, sudahkah kamu ketahui mengenai Hyperautomation? 

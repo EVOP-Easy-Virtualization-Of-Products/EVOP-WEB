@@ -4,6 +4,8 @@ date: "2025-06-02"
 description: "Dampak Positif Teknologi Ramah Lingkungan: Fakta Mengejutkan yang Wajib Kamu Tahu!"
 image: "/Dampak-Positif-teknologi-Ramah-Lingkungan.jpg"
 keyword: "Bussiness Website, Digital Bussiness, Bisnis Digital, Bisnis Website,teknologi,Lingkungan"
+author: "Amanina Rasyid Wiyani"
+author_image: "/author/rasyid.jpeg"
 ---
 
 Ketika sobat Evop mendengar frasa teknologi ramah lingkungan, kemungkinan terbesar yang terlintas melalui benak sobat Evop adalah teknologi panel Surya atau barangkali mobil listrik yang tampak futuristik tetapi memilikiharga selangit. Akan tetapi, akankah sobat Evop mengetahui dibalik citra yang canggih dan serba hijau tersebut, terdapat fakta-fakta mengejutkan yang sobat Evop belum ketahui.Nah, pengembangan dari teknologi ramah lingkungan tidak sekadar soal untuk menyelamatkan planet, tetapi juga bisa menyelamatkan kantong kering mahasiswa, membuka lapangan kerja baru, dan bahkan memulihkan udara yang kita hirup setiap hari agar lebih sehat. Yuk, simak lebih lanjut!

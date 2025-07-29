@@ -4,6 +4,8 @@ date: "2025-06-25"
 description: "Strategi Ampuh Agar Perusahaan Kamu Tak Tertinggal"
 image: "/RPA.jpg"
 keyword: " Robotik, Digital Bussiness, Bisnis Digital, Bisnis Website"
+author: "Amanina Rasyid Wiyani"
+author_image: "/author/rasyid.jpeg"
 ---
 
 

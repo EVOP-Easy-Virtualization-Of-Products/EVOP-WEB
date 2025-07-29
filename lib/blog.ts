@@ -11,9 +11,11 @@ export interface BlogPost {
   title: string;
   description: string;
   keyword?: string;
-  image?: string; // Optional, as defined
+  image?: string;
   date: string;
   content: string;
+  author?: string;
+  author_image?: string; // Properti baru untuk gambar penulis
 }
 
 export async function getPostById(id: string): Promise<BlogPost | null> {
@@ -33,6 +35,8 @@ export async function getPostById(id: string): Promise<BlogPost | null> {
       keyword: data.keyword || '',
       image: data.image || '/blog-placeholder.jpg',
       date: data.date || new Date().toISOString(),
+      author: data.author || 'EVOP',
+      author_image: data.author_image || null, // Ambil gambar penulis atau null jika tidak ada
       content,
     };
   } catch (error) {
@@ -48,7 +52,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
       const id = fileName.replace(/\.md$/, '');
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContents); // Extract content
+      const { data, content } = matter(fileContents);
 
       return {
         id,
@@ -57,11 +61,13 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         keyword: data.keyword || '',
         image: data.image || '/blog-placeholder.jpg',
         date: data.date || new Date().toISOString(),
-        content, // Include content
+        author: data.author || 'EVOP',
+        author_image: data.author_image || null, // Ambil gambar penulis atau null jika tidak ada
+        content,
       };
     });
 
-    return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+    return allPostsData.sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
   } catch (error) {
     console.error('getAllPosts: Error fetching posts', error);
     return [];
