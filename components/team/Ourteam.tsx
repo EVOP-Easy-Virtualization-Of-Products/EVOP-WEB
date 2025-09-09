@@ -17,17 +17,17 @@ const foundersAndCoFounders: TeamMember[] = [
     isLeadership: true 
   },
   { 
-    name: "Arya Maulana", 
-    role: "Founder ", 
-    title: "Fullstack Developer, Cyber Security Expert",
-    image: "/team/arya2.jpg", 
+    name: "Aditya Pratama", 
+    role: "Co-Founder And CEO ", 
+    title: "Fullstack Developer",
+    image: "/team/Aditt.png", 
     isLeadership: true 
   },
   { 
-    name: "Aditya Pratama", 
-    role: "Co-Founder ", 
-    title: "Fullstack Developer",
-    image: "/team/Aditt.png", 
+    name: "Arya Maulana", 
+    role: "Co-Founder", 
+    title: "Fullstack Developer, Cyber Security Expert",
+    image: "/team/arya2.jpg", 
     isLeadership: true 
   },
 ]
